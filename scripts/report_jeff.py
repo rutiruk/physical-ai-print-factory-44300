@@ -117,7 +117,7 @@ def main():
              p('「従来制御でもよいのでは？」への回答','h'),
              p('その通りである。既知地図の搬送・工程管理は従来手法で実装でき、AIの不可欠性・速度優位性・最適性は未立証。本作の検証点は、公開モデルの実推論が観測から作業選択と移動waypointへ接続されることにある。目標画像・既知通路・候補記述への依存、単一試行、未知工場・実機転移、柔軟紙・単葉給紙、品質検査AIは未検証。'),
              p('講義要件と提出の確認','h'),
-             p('物理シミュレータ：Genesis。基盤モデル：Jeff / ViNT / NoMaDの公開重み。学習：追加なし。動画：俯瞰・到着通知・判断・AMR積載を共通SIM時刻に同期し、2倍速と省略区間を明記する。完成判定はresult.json、映像編集はmanifestを照合してから行う。提出名：説明資料_PAI最終課題_44300.pdf。YouTube・公開GitHub・OmniCampusへの公開/提出は未実施。'),
+             p('物理シミュレータ：Genesis。基盤モデル：Jeff / ViNT / NoMaDの公開重み。学習：追加なし。動画：俯瞰・到着通知・判断・AMR積載を共通SIM時刻に同期し、2倍速と省略区間を明記する。完成判定はresult.json、映像編集はmanifestを照合してから行う。提出名：説明資料_PAI最終課題_44300.pdf。コード・動画・PDFは<link href="https://github.com/rutiruk/physical-ai-print-factory-44300">公開GitHubリポジトリ</link>に配置。YouTube公開・OmniCampusへの提出は未実施。'),
              p('一次資料・同梱証跡','h'),
              p('<link href="https://github.com/firelex/jeff">Jeff公式コード</link> / <link href="https://huggingface.co/jeff-legacy/Jeff-Qwen3.5-2B">Jeff 2B v1.2公開重み</link> / <link href="https://github.com/robodhruv/visualnav-transformer">ViNT / NoMaD公式実装</link><br/><link href="https://www.dnp.co.jp/media/detail/20168683_1563.html">DNP 製版</link> / <link href="https://www.dnp.co.jp/media/detail/20169183_1563.html">DNP 印刷</link> / <link href="https://www.dnp.co.jp/media/detail/20169338_1563.html">DNP 製本</link><br/>再実行：setup-jeff-factory.ps1、scripts/jeff_factory_demo.py。証跡：output/jeff_factory/jeff/result.json、各probe JSON、画像hash、モデルrevision。詳細はdocs/superpowers/README_JEFF_RUNTIME.md。評価表は集計途中のevaluation.jsonを転記せず、保存結果を直接読む。モデル重み・仮想環境・講義資料はソース提出ZIP外。','small')]
     args.output.parent.mkdir(parents=True, exist_ok=True)
