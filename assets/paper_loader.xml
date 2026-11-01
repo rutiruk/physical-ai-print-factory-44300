@@ -1,0 +1,14 @@
+<mujoco model="pile_side_pusher">
+  <worldbody>
+    <body name="carriage">
+      <inertial pos="0 0 0" mass="1" diaginertia=".01 .01 .01"/>
+      <joint name="x" type="slide" axis="1 0 0" range="-3.5 4" damping="5"/>
+      <joint name="y" type="slide" axis="0 1 0" range="-1 2" damping="5"/>
+      <joint name="z" type="slide" axis="0 0 1" range=".395 1" damping="5"/>
+      <body name="tool">
+        <joint name="yaw" type="hinge" axis="0 0 1" damping="2"/>
+        <geom name="blade" type="box" size=".18 .012 .003" mass=".6" rgba=".95 .55 .08 1" friction=".4 .01 .001"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

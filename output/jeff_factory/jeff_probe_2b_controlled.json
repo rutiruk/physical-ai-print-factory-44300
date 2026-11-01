@@ -1,0 +1,215 @@
+{
+  "model": {
+    "id": "mstrasser/Jeff-Qwen3.5-2B",
+    "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+    "release": "v1.2",
+    "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+    "device": "cuda:1",
+    "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+    "training": "none",
+    "adapter": null,
+    "checkpoint_sha256": {
+      "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+      "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+    }
+  },
+  "same_text_state_and_options": true,
+  "warmup_latency_ms": 850.3577000010409,
+  "warm_median_ms": 192.25444999756292,
+  "warm_p95_ms": 225.43350000341889,
+  "p95_method": "nearest rank, n=4",
+  "south_probability_increase_blocked_minus_clear": 0.1603001566782028,
+  "correct_choices": 4,
+  "image_trials": [
+    {
+      "choice": "direct",
+      "probabilities": {
+        "direct": 0.6465759488000901,
+        "south": 0.35342405119991
+      },
+      "latency_ms": 190.99229999847012,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "5b58eb7c31899811d3fadd4d31faad956582cbdd8929f38c83e8c20d759126ef",
+      "condition": "clear",
+      "repetition": 0,
+      "expected": "direct"
+    },
+    {
+      "choice": "south",
+      "probabilities": {
+        "direct": 0.4862757921218872,
+        "south": 0.5137242078781128
+      },
+      "latency_ms": 190.48489999840967,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "a5f57425f4ce174f8e32b0c1f6041888a5eca8f9d29b3401789e1fb8b6d6526a",
+      "condition": "blocked",
+      "repetition": 0,
+      "expected": "south"
+    },
+    {
+      "choice": "direct",
+      "probabilities": {
+        "direct": 0.6465759488000901,
+        "south": 0.35342405119991
+      },
+      "latency_ms": 225.43350000341889,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "5b58eb7c31899811d3fadd4d31faad956582cbdd8929f38c83e8c20d759126ef",
+      "condition": "clear",
+      "repetition": 1,
+      "expected": "direct"
+    },
+    {
+      "choice": "south",
+      "probabilities": {
+        "direct": 0.4862757921218872,
+        "south": 0.5137242078781128
+      },
+      "latency_ms": 193.5165999966557,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "a5f57425f4ce174f8e32b0c1f6041888a5eca8f9d29b3401789e1fb8b6d6526a",
+      "condition": "blocked",
+      "repetition": 1,
+      "expected": "south"
+    }
+  ],
+  "dispatch_request": {
+    "state": {
+      "task": "Choose one next global factory dispatch from the feasible candidates.",
+      "time": 120,
+      "robot": {
+        "position": "central staging",
+        "carrying": null,
+        "battery": 0.82
+      },
+      "printers": {
+        "cyan": {
+          "status": "idle",
+          "loaded_material": "PLA"
+        },
+        "magenta": {
+          "status": "busy",
+          "remaining_seconds": 45
+        },
+        "yellow": {
+          "status": "idle",
+          "loaded_material": "PETG"
+        }
+      },
+      "jobs": [
+        {
+          "id": "urgent",
+          "material": "PLA",
+          "due_seconds": 40,
+          "print_seconds": 20,
+          "release": true
+        },
+        {
+          "id": "later",
+          "material": "PETG",
+          "due_seconds": 180,
+          "print_seconds": 45,
+          "release": true
+        }
+      ],
+      "constraints": "Prioritize a released job that can finish before its due time. Do not interrupt busy printers. The aisle may require a visual detour."
+    },
+    "candidates": [
+      {
+        "id": "urgent_cyan",
+        "description": "Deliver the urgent PLA job to idle cyan printer now; it can complete before its due time."
+      },
+      {
+        "id": "later_yellow",
+        "description": "Deliver the later PETG job to idle yellow printer first; the urgent job will wait."
+      },
+      {
+        "id": "urgent_magenta",
+        "description": "Wait 45 seconds for busy magenta before starting the urgent job; it will miss its due time."
+      },
+      {
+        "id": "hold",
+        "description": "Hold the robot at staging while both idle printers remain unused."
+      }
+    ]
+  },
+  "dispatch_result": {
+    "choice": "urgent_cyan",
+    "probabilities": {
+      "urgent_cyan": 0.9041876474751088,
+      "later_yellow": 0.06845782162538554,
+      "urgent_magenta": 0.015543140948678973,
+      "hold": 0.011811389950826642
+    },
+    "latency_ms": 211.77369999713846,
+    "model": {
+      "id": "mstrasser/Jeff-Qwen3.5-2B",
+      "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+      "release": "v1.2",
+      "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+      "device": "cuda:1",
+      "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+      "training": "none",
+      "adapter": null,
+      "checkpoint_sha256": {
+        "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+        "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+      }
+    },
+    "image_sha256": "a5f57425f4ce174f8e32b0c1f6041888a5eca8f9d29b3401789e1fb8b6d6526a"
+  },
+  "limitation": "Two synthetic views and four trials are a functional probe, not a visual accuracy benchmark. Upstream documents the base as English/text-only."
+}

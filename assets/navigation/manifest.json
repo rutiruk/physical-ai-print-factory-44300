@@ -1,0 +1,11 @@
+{
+  "source_repository": "https://github.com/robodhruv/visualnav-transformer",
+  "source_revision": "dca79815b704e5aa9c6bdc3082351f9e3b2848c2",
+  "diffusion_repository": "https://github.com/real-stanford/diffusion_policy",
+  "diffusion_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+  "official_checkpoint_folder": "https://drive.google.com/drive/folders/1a9yWR2iooXFAqjQHetz263--4_2FFggg",
+  "checkpoints": {
+    "vint": {"file": "vint.pth", "drive_id": "1ckrceGb5m_uUtq3pD8KHwnqtJgPl6kF5", "sha256": "155fd72de2e98ae0e2fef9404072e1aefa79dae5f7f2411d4bcf7e384b83aa1f"},
+    "nomad": {"file": "nomad.pth", "drive_id": "1YJhkkMJAYOiKNyCaelbS_alpUpAJsOUb", "sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333"}
+  }
+}

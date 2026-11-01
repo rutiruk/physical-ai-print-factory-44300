@@ -1,0 +1,8 @@
+<mujoco model="receiver_bridge_lift">
+  <worldbody>
+    <body name="platform" pos="2 .94 .375">
+      <joint name="height" type="slide" axis="0 0 1" range="0 .09" damping="4"/>
+      <geom type="box" size=".315 .149 .02" mass="1.5" rgba=".52 .58 .65 1"/>
+    </body>
+  </worldbody>
+</mujoco>

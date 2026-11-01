@@ -1,0 +1,21 @@
+{
+  "ready": {
+    "ready": true,
+    "models": {
+      "vint": {
+        "checkpoint_sha256": "155fd72de2e98ae0e2fef9404072e1aefa79dae5f7f2411d4bcf7e384b83aa1f",
+        "parameters": 29662397,
+        "strict_weights": true
+      },
+      "nomad": {
+        "checkpoint_sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333",
+        "parameters": 19049675,
+        "strict_weights": true
+      }
+    },
+    "device": "cuda:1"
+  },
+  "two_actual_inference_responses": true,
+  "invalid_request_error": true,
+  "exit_code": 0
+}

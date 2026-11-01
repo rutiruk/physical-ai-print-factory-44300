@@ -1,0 +1,10 @@
+[project]
+name = "print-factory-ai"
+version = "0.1.0"
+description = "A factory-scale Physical AI demonstrator in Genesis"
+requires-python = ">=3.10,<3.14"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

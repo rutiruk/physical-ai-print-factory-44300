@@ -1,0 +1,107 @@
+[
+  {
+    "amr": 0,
+    "time_s": 46.2,
+    "minimum_measured_speed": 0.3999459096801501
+  },
+  {
+    "amr": 0,
+    "time_s": 87.14,
+    "minimum_measured_speed": 0.39989758798369796
+  },
+  {
+    "amr": 1,
+    "time_s": 107.94,
+    "minimum_measured_speed": 0.39971812166396387
+  },
+  {
+    "amr": 1,
+    "time_s": 108.99,
+    "minimum_measured_speed": 0.3999847715641607
+  },
+  {
+    "amr": 1,
+    "time_s": 144.55,
+    "minimum_measured_speed": 0.4001197494106008
+  },
+  {
+    "amr": 0,
+    "time_s": 240.85,
+    "minimum_measured_speed": 0.3999437663879726
+  },
+  {
+    "amr": 0,
+    "time_s": 281.79,
+    "minimum_measured_speed": 0.3999007855219198
+  },
+  {
+    "amr": 1,
+    "time_s": 301.45,
+    "minimum_measured_speed": 0.39994421657983215
+  },
+  {
+    "amr": 1,
+    "time_s": 302.48,
+    "minimum_measured_speed": 0.399957388287115
+  },
+  {
+    "amr": 1,
+    "time_s": 345.5,
+    "minimum_measured_speed": 0.39990843775811874
+  },
+  {
+    "amr": 0,
+    "time_s": 437.48,
+    "minimum_measured_speed": 0.3999557650536553
+  },
+  {
+    "amr": 0,
+    "time_s": 478.39,
+    "minimum_measured_speed": 0.39989171735285794
+  },
+  {
+    "amr": 1,
+    "time_s": 498.04,
+    "minimum_measured_speed": 0.3998093938010688
+  },
+  {
+    "amr": 1,
+    "time_s": 499.09,
+    "minimum_measured_speed": 0.3999892525675119
+  },
+  {
+    "amr": 1,
+    "time_s": 541.0,
+    "minimum_measured_speed": 0.4001190158609321
+  },
+  {
+    "amr": 0,
+    "time_s": 637.5,
+    "minimum_measured_speed": 0.39995485261483776
+  },
+  {
+    "amr": 0,
+    "time_s": 678.46,
+    "minimum_measured_speed": 0.39989780742045805
+  },
+  {
+    "amr": 1,
+    "time_s": 698.05,
+    "minimum_measured_speed": 0.39980545834408915
+  },
+  {
+    "amr": 1,
+    "time_s": 699.08,
+    "minimum_measured_speed": 0.39993607769367606
+  },
+  {
+    "amr": 1,
+    "time_s": 742.01,
+    "minimum_measured_speed": 0.39995082762623746
+  },
+  {
+    "amr": 1,
+    "time_s": 743.14,
+    "minimum_measured_speed": 0.39781424679878324
+  }
+]

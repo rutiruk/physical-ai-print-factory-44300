@@ -1,0 +1,145 @@
+{
+  "model": {
+    "id": "mstrasser/Jeff-Qwen3.5-2B",
+    "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+    "release": "v1.2",
+    "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+    "device": "cuda:1",
+    "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+    "training": "none",
+    "adapter": null,
+    "checkpoint_sha256": {
+      "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+      "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+    }
+  },
+  "crop_box": [
+    5,
+    545,
+    185,
+    605
+  ],
+  "same_text_and_crop_for_both_conditions": true,
+  "state": "The image is a closeup of the direct factory corridor. Is a red obstacle present in this corridor? Select the route based only on this camera observation.",
+  "candidates": [
+    {
+      "id": "direct",
+      "description": "No red obstacle is present: use the direct corridor."
+    },
+    {
+      "id": "south",
+      "description": "A red obstacle is present: avoid this corridor and use the south detour."
+    }
+  ],
+  "trials": [
+    {
+      "choice": "direct",
+      "probabilities": {
+        "direct": 0.9364722054145397,
+        "south": 0.06352779458546026
+      },
+      "latency_ms": 149.34849999917787,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "7d0324b19ac5d30fb51c65d104d2765031241607b0afc783e33ccafe9af87afc",
+      "condition": "clear",
+      "repetition": 0,
+      "expected": "direct"
+    },
+    {
+      "choice": "south",
+      "probabilities": {
+        "direct": 0.17689756086163405,
+        "south": 0.823102439138366
+      },
+      "latency_ms": 156.35029999975814,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "6bc7468b601af8019e19843a70bd55c809bd7f12a3f8cd7b7c831685660f482d",
+      "condition": "blocked",
+      "repetition": 0,
+      "expected": "south"
+    },
+    {
+      "choice": "direct",
+      "probabilities": {
+        "direct": 0.9364722054145397,
+        "south": 0.06352779458546026
+      },
+      "latency_ms": 153.20639999845298,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "7d0324b19ac5d30fb51c65d104d2765031241607b0afc783e33ccafe9af87afc",
+      "condition": "clear",
+      "repetition": 1,
+      "expected": "direct"
+    },
+    {
+      "choice": "south",
+      "probabilities": {
+        "direct": 0.17689756086163405,
+        "south": 0.823102439138366
+      },
+      "latency_ms": 156.69079999861424,
+      "model": {
+        "id": "mstrasser/Jeff-Qwen3.5-2B",
+        "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+        "release": "v1.2",
+        "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+        "device": "cuda:1",
+        "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+        "training": "none",
+        "adapter": null,
+        "checkpoint_sha256": {
+          "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+          "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+        }
+      },
+      "image_sha256": "6bc7468b601af8019e19843a70bd55c809bd7f12a3f8cd7b7c831685660f482d",
+      "condition": "blocked",
+      "repetition": 1,
+      "expected": "south"
+    }
+  ],
+  "warmup_latency_ms": 785.7374999985041,
+  "warm_median_ms": 154.77834999910556,
+  "warm_p95_ms": 156.69079999861424,
+  "p95_method": "nearest rank, n=4",
+  "correct_choices": 4
+}

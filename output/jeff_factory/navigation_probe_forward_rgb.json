@@ -1,0 +1,158 @@
+{
+  "observation_paths": [
+    "output/jeff_factory/nav_loop/vint_000.png",
+    "output/jeff_factory/nav_loop/vint_001.png",
+    "output/jeff_factory/nav_loop/vint_002.png",
+    "output/jeff_factory/nav_loop/vint_003.png",
+    "output/jeff_factory/nav_loop/vint_004.png",
+    "output/jeff_factory/nav_loop/vint_005.png"
+  ],
+  "goal_path": "output/jeff_factory/nav_loop/goal.png",
+  "results": [
+    {
+      "model": "vint",
+      "waypoints": [
+        [
+          0.053840458393096924,
+          -5.6843717175070196e-05
+        ],
+        [
+          0.10758479684591293,
+          -0.00188705965410918
+        ],
+        [
+          0.16158068180084229,
+          -0.002940228907391429
+        ],
+        [
+          0.21510255336761475,
+          -0.004997809883207083
+        ],
+        [
+          0.2687695026397705,
+          -0.007657332811504602
+        ]
+      ],
+      "normalized_waypoints": [
+        [
+          1.0768091678619385,
+          -0.0011368743143975735
+        ],
+        [
+          2.151695966720581,
+          -0.03774119168519974
+        ],
+        [
+          3.2316136360168457,
+          -0.058804575353860855
+        ],
+        [
+          4.302051067352295,
+          -0.09995619207620621
+        ],
+        [
+          5.37539005279541,
+          -0.1531466543674469
+        ]
+      ],
+      "distance": 4.890467643737793,
+      "distance_units": "learned_temporal_steps",
+      "waypoint_units": "meters",
+      "coordinate_frame": "robot_x_forward_y_left",
+      "meters_per_waypoint_unit": 0.05,
+      "latency_ms": 58.346600002550986,
+      "history_frames": 6,
+      "device": "cuda:1",
+      "checkpoint_sha256": "155fd72de2e98ae0e2fef9404072e1aefa79dae5f7f2411d4bcf7e384b83aa1f",
+      "parameters": 29662397,
+      "strict_weights": true
+    },
+    {
+      "model": "nomad",
+      "waypoints": [
+        [
+          0.052444152534008026,
+          -0.0006214141845703125
+        ],
+        [
+          0.10177028179168701,
+          0.0005489110946655274
+        ],
+        [
+          0.1544283851981163,
+          0.0009075403213500977
+        ],
+        [
+          0.21067798882722855,
+          0.0025174379348754886
+        ],
+        [
+          0.26126861199736595,
+          0.004440093040466309
+        ],
+        [
+          0.31461986526846886,
+          0.006094717979431153
+        ],
+        [
+          0.3715209327638149,
+          0.008971905708312989
+        ],
+        [
+          0.42359795793890953,
+          0.011780333518981934
+        ]
+      ],
+      "normalized_waypoints": [
+        [
+          1.0488830506801605,
+          -0.01242828369140625
+        ],
+        [
+          2.0354056358337402,
+          0.010978221893310547
+        ],
+        [
+          3.088567703962326,
+          0.018150806427001953
+        ],
+        [
+          4.213559776544571,
+          0.050348758697509766
+        ],
+        [
+          5.225372239947319,
+          0.08880186080932617
+        ],
+        [
+          6.292397305369377,
+          0.12189435958862305
+        ],
+        [
+          7.4304186552762985,
+          0.17943811416625977
+        ],
+        [
+          8.47195915877819,
+          0.23560667037963867
+        ]
+      ],
+      "distance": 8.285834312438965,
+      "distance_units": "learned_temporal_steps",
+      "waypoint_units": "meters",
+      "coordinate_frame": "robot_x_forward_y_left",
+      "meters_per_waypoint_unit": 0.05,
+      "latency_ms": 158.04430000207503,
+      "history_frames": 4,
+      "device": "cuda:1",
+      "checkpoint_sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333",
+      "parameters": 19049675,
+      "strict_weights": true
+    }
+  ],
+  "total_seconds": 14.20216249999794,
+  "gpu_name": "NVIDIA RTX A4000",
+  "torch": "2.8.0+cu128",
+  "numpy": "2.1.2",
+  "transfer_success": "not assessed; inference probe only"
+}

@@ -1,0 +1,1254 @@
+{
+  "state_kind": "HYPOTHETICAL PROBE based on failed actual state. Guard-stopped/retry state and after-pickup print readiness are modeled counterfactuals; no factory actions executed.",
+  "source_failed_state": {
+    "time_s": 336.84,
+    "generation": 23,
+    "jobs": [
+      {
+        "id": "A",
+        "due": 600,
+        "pages": 8,
+        "copies": 100,
+        "locations": {
+          "1": "amr0",
+          "2": "gather"
+        },
+        "received": [
+          2
+        ],
+        "completed": null
+      },
+      {
+        "id": "B",
+        "due": 350,
+        "pages": 4,
+        "copies": 100,
+        "locations": {
+          "1": "amr1"
+        },
+        "received": [],
+        "completed": null
+      },
+      {
+        "id": "C",
+        "due": 750,
+        "pages": 4,
+        "copies": 100,
+        "locations": {
+          "1": "stock"
+        },
+        "received": [],
+        "completed": null
+      }
+    ],
+    "amrs": [
+      {
+        "id": "carry:A:1:press:folder:0",
+        "description": "AMR1 carry job A F1 from press to folder; due 600s",
+        "amr": 0,
+        "job": "A",
+        "form": 1,
+        "source": "press",
+        "destination": "folder",
+        "route": "south"
+      },
+      {
+        "id": "carry:B:1:folder:gather:1",
+        "description": "AMR2 carry job B F1 from folder to gather; due 350s",
+        "amr": 1,
+        "job": "B",
+        "form": 1,
+        "source": "folder",
+        "destination": "gather",
+        "route": "south",
+        "picked_up": true
+      }
+    ],
+    "machines": {},
+    "faults": []
+  },
+  "source_failed_navigation": {
+    "time_s": 336.78000000000003,
+    "amr": 1,
+    "position": [
+      0.9207336902618408,
+      0.8349624872207642,
+      0.2199999988079071
+    ],
+    "goal": [
+      2.0,
+      0.55
+    ],
+    "observation_paths": [
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00320.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00321.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00322.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00323.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00324.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00325.png",
+      "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\nav_00326.png"
+    ],
+    "goal_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff\\goal_026.png",
+    "commanded_speed": 0.39998727973819787,
+    "commanded_yaw_rate": -0.015950128038039302,
+    "model": "nomad",
+    "waypoints": [
+      [
+        0.13453127443790436,
+        0.0022713184356689454
+      ],
+      [
+        0.27314701676368713,
+        8.749961853027344e-06
+      ],
+      [
+        0.4088422805070877,
+        -0.0032606124877929688
+      ],
+      [
+        0.5422640591859818,
+        -0.004332280158996582
+      ],
+      [
+        0.670575425028801,
+        -0.003324103355407715
+      ],
+      [
+        0.7953472584486008,
+        0.004705882072448731
+      ],
+      [
+        0.9138227850198746,
+        0.021527552604675294
+      ],
+      [
+        1.0236094743013382,
+        0.050399947166442874
+      ]
+    ],
+    "normalized_waypoints": [
+      [
+        1.3453127443790436,
+        0.022713184356689453
+      ],
+      [
+        2.7314701676368713,
+        8.749961853027344e-05
+      ],
+      [
+        4.088422805070877,
+        -0.03260612487792969
+      ],
+      [
+        5.4226405918598175,
+        -0.04332280158996582
+      ],
+      [
+        6.70575425028801,
+        -0.03324103355407715
+      ],
+      [
+        7.953472584486008,
+        0.047058820724487305
+      ],
+      [
+        9.138227850198746,
+        0.21527552604675293
+      ],
+      [
+        10.236094743013382,
+        0.5039994716644287
+      ]
+    ],
+    "distance": 15.045232772827148,
+    "distance_units": "learned_temporal_steps",
+    "waypoint_units": "meters",
+    "coordinate_frame": "robot_x_forward_y_left",
+    "meters_per_waypoint_unit": 0.1,
+    "latency_ms": 159.3460000003688,
+    "history_frames": 4,
+    "device": "cuda:1",
+    "checkpoint_sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333",
+    "parameters": 19049675,
+    "strict_weights": true,
+    "id": 306
+  },
+  "records": [
+    {
+      "name": "recover_vs_wait_failed_state_with_hypothetical_guard_stop",
+      "repetition": 0,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "time_s": 336.84,
+          "generation": 23,
+          "jobs": [
+            {
+              "id": "A",
+              "due": 600,
+              "pages": 8,
+              "copies": 100,
+              "locations": {
+                "1": "amr0",
+                "2": "gather"
+              },
+              "received": [
+                2
+              ],
+              "completed": null
+            },
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "amr1"
+              },
+              "received": [],
+              "completed": null
+            },
+            {
+              "id": "C",
+              "due": 750,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "stock"
+              },
+              "received": [],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            {
+              "id": "carry:A:1:press:folder:0",
+              "description": "AMR1 carry job A F1 from press to folder; due 600s",
+              "amr": 0,
+              "job": "A",
+              "form": 1,
+              "source": "press",
+              "destination": "folder",
+              "route": "south"
+            },
+            {
+              "id": "carry:B:1:folder:gather:1",
+              "description": "AMR2 carry job B F1 from folder to gather; due 350s",
+              "amr": 1,
+              "job": "B",
+              "form": 1,
+              "source": "folder",
+              "destination": "gather",
+              "route": "south",
+              "picked_up": true
+            }
+          ],
+          "machines": {},
+          "faults": [],
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "robots": [
+            {
+              "position": [
+                -1.9437941312789917,
+                -1.3232150077819824
+              ],
+              "model": "ViNT"
+            },
+            {
+              "position": [
+                0.9207336902618408,
+                0.8349624872207642
+              ],
+              "model": "NoMaD"
+            }
+          ],
+          "navigation_recovery": [
+            {
+              "amr": 1,
+              "goal": [
+                2.0,
+                0.55
+              ],
+              "reason": "cross_track_deviation",
+              "attempt": 0
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "id": "recover:1",
+            "amr": 1,
+            "description": "Restart AMR2 nomad visual navigation from its safely stopped current pose toward [2.0, 0.55]. Reorient in place and refresh RGB history, then let the learned model generate motion again. This advances the assigned delivery; waiting does not fix its deviation."
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "recover:1",
+        "probabilities": {
+          "recover:1": 0.8596111664118047,
+          "wait": 0.14038883358819534
+        },
+        "latency_ms": 874.3232999986503,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 688.2920999996713,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "recover:1",
+          "probabilities": {
+            "recover:1": 0.8596111664118047,
+            "wait": 0.14038883358819534
+          },
+          "latency_ms": 186.031199998979,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "name": "recover_vs_wait_failed_state_with_hypothetical_guard_stop",
+      "repetition": 1,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "time_s": 336.84,
+          "generation": 23,
+          "jobs": [
+            {
+              "id": "A",
+              "due": 600,
+              "pages": 8,
+              "copies": 100,
+              "locations": {
+                "1": "amr0",
+                "2": "gather"
+              },
+              "received": [
+                2
+              ],
+              "completed": null
+            },
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "amr1"
+              },
+              "received": [],
+              "completed": null
+            },
+            {
+              "id": "C",
+              "due": 750,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "stock"
+              },
+              "received": [],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            {
+              "id": "carry:A:1:press:folder:0",
+              "description": "AMR1 carry job A F1 from press to folder; due 600s",
+              "amr": 0,
+              "job": "A",
+              "form": 1,
+              "source": "press",
+              "destination": "folder",
+              "route": "south"
+            },
+            {
+              "id": "carry:B:1:folder:gather:1",
+              "description": "AMR2 carry job B F1 from folder to gather; due 350s",
+              "amr": 1,
+              "job": "B",
+              "form": 1,
+              "source": "folder",
+              "destination": "gather",
+              "route": "south",
+              "picked_up": true
+            }
+          ],
+          "machines": {},
+          "faults": [],
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "robots": [
+            {
+              "position": [
+                -1.9437941312789917,
+                -1.3232150077819824
+              ],
+              "model": "ViNT"
+            },
+            {
+              "position": [
+                0.9207336902618408,
+                0.8349624872207642
+              ],
+              "model": "NoMaD"
+            }
+          ],
+          "navigation_recovery": [
+            {
+              "amr": 1,
+              "goal": [
+                2.0,
+                0.55
+              ],
+              "reason": "cross_track_deviation",
+              "attempt": 0
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "id": "recover:1",
+            "amr": 1,
+            "description": "Restart AMR2 nomad visual navigation from its safely stopped current pose toward [2.0, 0.55]. Reorient in place and refresh RGB history, then let the learned model generate motion again. This advances the assigned delivery; waiting does not fix its deviation."
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "recover:1",
+        "probabilities": {
+          "recover:1": 0.8596111664118047,
+          "wait": 0.14038883358819534
+        },
+        "latency_ms": 324.5725000015227,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 152.37859999979264,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "recover:1",
+          "probabilities": {
+            "recover:1": 0.8596111664118047,
+            "wait": 0.14038883358819534
+          },
+          "latency_ms": 172.19390000173007,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "name": "recover_vs_ready_print_and_wait_after_hypothetical_press_pickup",
+      "repetition": 0,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "time_s": 336.84,
+          "generation": 23,
+          "jobs": [
+            {
+              "id": "A",
+              "due": 600,
+              "pages": 8,
+              "copies": 100,
+              "locations": {
+                "1": "amr0",
+                "2": "gather"
+              },
+              "received": [
+                2
+              ],
+              "completed": null
+            },
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "amr1"
+              },
+              "received": [],
+              "completed": null
+            },
+            {
+              "id": "C",
+              "due": 750,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "stock"
+              },
+              "received": [],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            {
+              "id": "carry:A:1:press:folder:0",
+              "description": "AMR1 carry job A F1 from press to folder; due 600s",
+              "amr": 0,
+              "job": "A",
+              "form": 1,
+              "source": "press",
+              "destination": "folder",
+              "route": "south",
+              "picked_up": true
+            },
+            {
+              "id": "carry:B:1:folder:gather:1",
+              "description": "AMR2 carry job B F1 from folder to gather; due 350s",
+              "amr": 1,
+              "job": "B",
+              "form": 1,
+              "source": "folder",
+              "destination": "gather",
+              "route": "south",
+              "picked_up": true
+            }
+          ],
+          "machines": {},
+          "faults": [],
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "robots": [
+            {
+              "position": [
+                -1.9437941312789917,
+                -1.3232150077819824
+              ],
+              "model": "ViNT"
+            },
+            {
+              "position": [
+                0.9207336902618408,
+                0.8349624872207642
+              ],
+              "model": "NoMaD"
+            }
+          ],
+          "navigation_recovery": [
+            {
+              "amr": 1,
+              "goal": [
+                2.0,
+                0.55
+              ],
+              "reason": "cross_track_deviation",
+              "attempt": 0
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "id": "recover:1",
+            "amr": 1,
+            "description": "Restart AMR2 nomad visual navigation from its safely stopped current pose toward [2.0, 0.55]. Reorient in place and refresh RGB history, then let the learned model generate motion again. This advances the assigned delivery; waiting does not fix its deviation."
+          },
+          {
+            "id": "print:C:1",
+            "description": "Print approved job C F1, duplex UV, 100 sheets; due 750s"
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "recover:1",
+        "probabilities": {
+          "recover:1": 0.654411514234886,
+          "print:C:1": 0.2871689584007549,
+          "wait": 0.05841952736435912
+        },
+        "latency_ms": 355.66539999854285,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 164.41320000012638,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "recover:1",
+          "probabilities": {
+            "recover:1": 0.654411514234886,
+            "print:C:1": 0.2871689584007549,
+            "wait": 0.05841952736435912
+          },
+          "latency_ms": 191.25219999841647,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "name": "recover_vs_ready_print_and_wait_after_hypothetical_press_pickup",
+      "repetition": 1,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "time_s": 336.84,
+          "generation": 23,
+          "jobs": [
+            {
+              "id": "A",
+              "due": 600,
+              "pages": 8,
+              "copies": 100,
+              "locations": {
+                "1": "amr0",
+                "2": "gather"
+              },
+              "received": [
+                2
+              ],
+              "completed": null
+            },
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "amr1"
+              },
+              "received": [],
+              "completed": null
+            },
+            {
+              "id": "C",
+              "due": 750,
+              "pages": 4,
+              "copies": 100,
+              "locations": {
+                "1": "stock"
+              },
+              "received": [],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            {
+              "id": "carry:A:1:press:folder:0",
+              "description": "AMR1 carry job A F1 from press to folder; due 600s",
+              "amr": 0,
+              "job": "A",
+              "form": 1,
+              "source": "press",
+              "destination": "folder",
+              "route": "south",
+              "picked_up": true
+            },
+            {
+              "id": "carry:B:1:folder:gather:1",
+              "description": "AMR2 carry job B F1 from folder to gather; due 350s",
+              "amr": 1,
+              "job": "B",
+              "form": 1,
+              "source": "folder",
+              "destination": "gather",
+              "route": "south",
+              "picked_up": true
+            }
+          ],
+          "machines": {},
+          "faults": [],
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "robots": [
+            {
+              "position": [
+                -1.9437941312789917,
+                -1.3232150077819824
+              ],
+              "model": "ViNT"
+            },
+            {
+              "position": [
+                0.9207336902618408,
+                0.8349624872207642
+              ],
+              "model": "NoMaD"
+            }
+          ],
+          "navigation_recovery": [
+            {
+              "amr": 1,
+              "goal": [
+                2.0,
+                0.55
+              ],
+              "reason": "cross_track_deviation",
+              "attempt": 0
+            }
+          ]
+        },
+        "candidates": [
+          {
+            "id": "recover:1",
+            "amr": 1,
+            "description": "Restart AMR2 nomad visual navigation from its safely stopped current pose toward [2.0, 0.55]. Reorient in place and refresh RGB history, then let the learned model generate motion again. This advances the assigned delivery; waiting does not fix its deviation."
+          },
+          {
+            "id": "print:C:1",
+            "description": "Print approved job C F1, duplex UV, 100 sheets; due 750s"
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "recover:1",
+        "probabilities": {
+          "recover:1": 0.654411514234886,
+          "print:C:1": 0.2871689584007549,
+          "wait": 0.05841952736435912
+        },
+        "latency_ms": 324.6694000008574,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 145.00290000069072,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "recover:1",
+          "probabilities": {
+            "recover:1": 0.654411514234886,
+            "print:C:1": 0.2871689584007549,
+            "wait": 0.05841952736435912
+          },
+          "latency_ms": 179.6665000001667,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "name": "ready_four_page_leaflet_finish_current_description",
+      "repetition": 0,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "time_s": 120,
+          "generation": 1,
+          "jobs": [
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "product": "folded_leaflet",
+              "locations": {
+                "1": "gather"
+              },
+              "received": [
+                1
+              ],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            null,
+            null
+          ],
+          "machines": {},
+          "faults": []
+        },
+        "candidates": [
+          {
+            "id": "finish:B",
+            "description": "Trim and pack the folded four-page leaflet; bypass wire stitching for this single-sheet product: job B, 100 copies, due 350s. The finishing machine is ready."
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "finish:B",
+        "probabilities": {
+          "finish:B": 0.7888263346429716,
+          "wait": 0.21117366535702847
+        },
+        "latency_ms": 281.54820000054315,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 149.18609999949695,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "finish:B",
+          "probabilities": {
+            "finish:B": 0.7888263346429716,
+            "wait": 0.21117366535702847
+          },
+          "latency_ms": 132.3621000010462,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "name": "ready_four_page_leaflet_finish_current_description",
+      "repetition": 1,
+      "request": {
+        "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+        "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+        "state": {
+          "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+          "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+          "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe.",
+          "time_s": 120,
+          "generation": 1,
+          "jobs": [
+            {
+              "id": "B",
+              "due": 350,
+              "pages": 4,
+              "copies": 100,
+              "product": "folded_leaflet",
+              "locations": {
+                "1": "gather"
+              },
+              "received": [
+                1
+              ],
+              "completed": null
+            }
+          ],
+          "amrs": [
+            null,
+            null
+          ],
+          "machines": {},
+          "faults": []
+        },
+        "candidates": [
+          {
+            "id": "finish:B",
+            "description": "Trim and pack the folded four-page leaflet; bypass wire stitching for this single-sheet product: job B, 100 copies, due 350s. The finishing machine is ready."
+          },
+          {
+            "id": "wait",
+            "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+          }
+        ],
+        "plan_text_only": true
+      },
+      "result": {
+        "choice": "finish:B",
+        "probabilities": {
+          "finish:B": 0.7888263346429716,
+          "wait": 0.21117366535702847
+        },
+        "latency_ms": 281.14739999728044,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 148.0104999973264,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "finish:B",
+          "probabilities": {
+            "finish:B": 0.7888263346429716,
+            "wait": 0.21117366535702847
+          },
+          "latency_ms": 133.13689999995404,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    }
+  ]
+}

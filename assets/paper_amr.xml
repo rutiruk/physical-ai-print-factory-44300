@@ -1,0 +1,14 @@
+<mujoco model="paper_pile_amr">
+  <worldbody>
+    <body name="amr" pos="-2 0 .22">
+      <joint name="x" type="slide" axis="1 0 0" damping="8"/>
+      <joint name="y" type="slide" axis="0 1 0" damping="8"/>
+      <joint name="yaw" type="hinge" axis="0 0 1" damping="8"/>
+      <geom name="base" type="box" size=".30 .24 .13" mass="20" rgba=".03 .55 .95 1"/>
+      <body name="deck" pos="0 0 .155">
+        <joint name="lift" type="slide" axis="0 0 1" range="0 .12" damping="4"/>
+        <geom name="platform" type="box" size=".30 .24 .020" mass="2" rgba=".12 .62 .92 1" friction=".8 .01 .001"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

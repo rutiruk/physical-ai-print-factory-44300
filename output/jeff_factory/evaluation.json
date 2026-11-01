@@ -1,0 +1,302 @@
+{
+  "jeff": {
+    "status": "complete",
+    "success": true,
+    "simulation_seconds": 778.15,
+    "wall_seconds": 1202.4427991999983,
+    "arrivals": [
+      {
+        "time_s": 0,
+        "event": "JOB_ARRIVAL",
+        "job": "A",
+        "due": 600,
+        "pages": 8,
+        "copies": 100
+      },
+      {
+        "time_s": 8.5,
+        "event": "JOB_ARRIVAL",
+        "job": "B",
+        "due": 350,
+        "pages": 4,
+        "copies": 100
+      },
+      {
+        "time_s": 23.7,
+        "event": "JOB_ARRIVAL",
+        "job": "C",
+        "due": 750,
+        "pages": 4,
+        "copies": 100
+      }
+    ],
+    "jobs_completed": 3,
+    "jobs_observed": 3,
+    "units_completed": 300,
+    "booklets_completed": 100,
+    "leaflets_completed": 200,
+    "navigation_recoveries": 1,
+    "tardiness_seconds": {
+      "A": 0,
+      "B": 32.650000000000034,
+      "C": 28.139999999999986
+    },
+    "physical_pushes": 16,
+    "supported_pushes": 16,
+    "stale_rejections": 0,
+    "dispatch_latency": {
+      "count": 20,
+      "median_ms": 492.81444999996893,
+      "p95_ms": 577.5854000003164
+    },
+    "vision_latency": {
+      "count": 20,
+      "median_ms": 330.8113000011872,
+      "p95_ms": 403.0027999997401
+    },
+    "navigation": {
+      "vint": {
+        "inferences": 402,
+        "latency": {
+          "count": 402,
+          "median_ms": 52.93870000059542,
+          "p95_ms": 70.28390000050422
+        }
+      },
+      "nomad": {
+        "inferences": 366,
+        "latency": {
+          "count": 366,
+          "median_ms": 148.4046000005037,
+          "p95_ms": 180.70609999995213
+        }
+      }
+    },
+    "alternatives_per_decision": [
+      2,
+      5,
+      4,
+      2,
+      3,
+      3,
+      3,
+      2,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      2,
+      2,
+      3,
+      2
+    ],
+    "choices": [
+      {
+        "time_s": 0.8,
+        "choice": "print:A:2"
+      },
+      {
+        "time_s": 5.15,
+        "choice": "carry:A:2:press:folder:0@south"
+      },
+      {
+        "time_s": 31.970000000000002,
+        "choice": "print:B:1"
+      },
+      {
+        "time_s": 73.35000000000001,
+        "choice": "fold:A:2"
+      },
+      {
+        "time_s": 76.74,
+        "choice": "carry:A:2:folder:gather:1@south"
+      },
+      {
+        "time_s": 130.85,
+        "choice": "carry:B:1:press:folder:0@south"
+      },
+      {
+        "time_s": 226.65,
+        "choice": "print:A:1"
+      },
+      {
+        "time_s": 268.0,
+        "choice": "fold:B:1"
+      },
+      {
+        "time_s": 271.3,
+        "choice": "carry:B:1:folder:gather:1@south"
+      },
+      {
+        "time_s": 331.0,
+        "choice": "carry:A:1:press:folder:0@south"
+      },
+      {
+        "time_s": 356.7,
+        "choice": "recover:1"
+      },
+      {
+        "time_s": 375.65000000000003,
+        "choice": "finish:B"
+      },
+      {
+        "time_s": 423.25,
+        "choice": "print:C:1"
+      },
+      {
+        "time_s": 464.6,
+        "choice": "fold:A:1"
+      },
+      {
+        "time_s": 467.90000000000003,
+        "choice": "carry:A:1:folder:gather:1@south"
+      },
+      {
+        "time_s": 527.5,
+        "choice": "carry:C:1:press:folder:0@south"
+      },
+      {
+        "time_s": 567.2,
+        "choice": "finish:A"
+      },
+      {
+        "time_s": 664.7,
+        "choice": "fold:C:1"
+      },
+      {
+        "time_s": 668.0,
+        "choice": "carry:C:1:folder:gather:1@south"
+      },
+      {
+        "time_s": 771.14,
+        "choice": "finish:C"
+      }
+    ],
+    "claims": {
+      "training": "none",
+      "speed_superiority": "not established",
+      "visual_generalization": "not established; controlled pair only",
+      "physical_ai_necessity": "not established; classical navigation could solve known-map transport"
+    }
+  },
+  "rules": {
+    "status": "interrupted_to_match_dock_fix",
+    "success": false,
+    "simulation_seconds": 226.0,
+    "wall_seconds": null,
+    "arrivals": [
+      {
+        "time_s": 0,
+        "event": "JOB_ARRIVAL",
+        "job": "A",
+        "due": 600,
+        "pages": 8,
+        "copies": 100
+      },
+      {
+        "time_s": 8.5,
+        "event": "JOB_ARRIVAL",
+        "job": "B",
+        "due": 350,
+        "pages": 4,
+        "copies": 100
+      },
+      {
+        "time_s": 23.7,
+        "event": "JOB_ARRIVAL",
+        "job": "C",
+        "due": 750,
+        "pages": 4,
+        "copies": 100
+      }
+    ],
+    "jobs_completed": 0,
+    "jobs_observed": 3,
+    "units_completed": 0,
+    "booklets_completed": 0,
+    "leaflets_completed": 0,
+    "navigation_recoveries": 0,
+    "tardiness_seconds": {},
+    "physical_pushes": 5,
+    "supported_pushes": 5,
+    "stale_rejections": 0,
+    "dispatch_latency": {
+      "count": 7,
+      "median_ms": 0.0,
+      "p95_ms": 0.0
+    },
+    "vision_latency": {
+      "count": 0,
+      "median_ms": null,
+      "p95_ms": null
+    },
+    "navigation": {
+      "vint": {
+        "inferences": 133,
+        "latency": {
+          "count": 133,
+          "median_ms": 54.243500002485234,
+          "p95_ms": 143.0742000011378
+        }
+      },
+      "nomad": {
+        "inferences": 81,
+        "latency": {
+          "count": 81,
+          "median_ms": 157.62050000193994,
+          "p95_ms": 179.6211000000767
+        }
+      }
+    },
+    "alternatives_per_decision": [
+      2,
+      5,
+      4,
+      2,
+      3,
+      3,
+      3
+    ],
+    "choices": [
+      {
+        "time_s": 0.0,
+        "choice": "print:A:2"
+      },
+      {
+        "time_s": 4.0,
+        "choice": "carry:A:2:press:folder:0@south"
+      },
+      {
+        "time_s": 28.41,
+        "choice": "print:B:1"
+      },
+      {
+        "time_s": 67.3,
+        "choice": "fold:A:2"
+      },
+      {
+        "time_s": 70.3,
+        "choice": "carry:A:2:folder:gather:1@south"
+      },
+      {
+        "time_s": 121.31,
+        "choice": "carry:B:1:press:folder:0@south"
+      },
+      {
+        "time_s": 209.1,
+        "choice": "print:A:1"
+      }
+    ],
+    "claims": {
+      "training": "none",
+      "speed_superiority": "not established",
+      "visual_generalization": "not established; controlled pair only",
+      "physical_ai_necessity": "not established; classical navigation could solve known-map transport"
+    }
+  },
+  "comparison_note": "No controlled matched comparison establishes AI necessity or speed superiority. The saved rule-reference run was interrupted during motion-controller repairs; its incomplete count must not be compared as a completed benchmark."
+}

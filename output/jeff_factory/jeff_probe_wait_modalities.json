@@ -1,0 +1,420 @@
+{
+  "request": {
+    "image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\decision_0039__fcc116884f981a6c.png",
+    "corridor_image_path": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\probe_inputs\\corridor_0012__d31cd227fcd5f4ce.png",
+    "state": {
+      "time_s": 149.99,
+      "generation": 11,
+      "jobs": [
+        {
+          "id": "A",
+          "due": 600,
+          "pages": 8,
+          "copies": 100,
+          "locations": {
+            "1": "stock",
+            "2": "folder_in"
+          },
+          "received": [],
+          "completed": null
+        },
+        {
+          "id": "B",
+          "due": 350,
+          "pages": 4,
+          "copies": 100,
+          "locations": {
+            "1": "press"
+          },
+          "received": [],
+          "completed": null
+        },
+        {
+          "id": "C",
+          "due": 750,
+          "pages": 4,
+          "copies": 100,
+          "locations": {
+            "1": "stock"
+          },
+          "received": [],
+          "completed": null
+        }
+      ],
+      "amrs": [
+        null,
+        null
+      ],
+      "machines": {},
+      "faults": [],
+      "plant": "Sheetfed duplex UV printing, folded signatures, saddle stitching. Source feeder LIFO constraint already filtered.",
+      "routes": "Judge visible red-crate obstructions from the ceiling image. Direct lane y=0.55. South lane y=-0.65. Ports x press=-2, folder=0, gather=2.",
+      "objective": "Choose a useful eligible action, prioritize urgent jobs without starving production. Decisions run repeatedly. Avoid wait when useful work is safe."
+    },
+    "candidates": [
+      {
+        "id": "fold:A:2",
+        "description": "Start folding job A F2 now: its stack is physically delivered to folder input, duplex printed, UV cured, inspection accepted and jogged. Folder is available and fault-free. This 3-second local process needs no corridor transport. Due 600 seconds."
+      },
+      {
+        "id": "wait",
+        "description": "Remain idle for 0.75 seconds and delay jobs; only useful if other actions are unsafe or a new observation is required. Waiting cannot clear the crate or advance a ready machine."
+      }
+    ]
+  },
+  "records": [
+    {
+      "plan_text_only": false,
+      "repetition": 0,
+      "result": {
+        "choice": "fold:A:2",
+        "probabilities": {
+          "fold:A:2": 0.5546914339065552,
+          "wait": 0.4453085660934448
+        },
+        "latency_ms": 921.7022999982873,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text",
+          "image"
+        ],
+        "image_used": true,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 706.3920000000508,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "fold:A:2",
+          "probabilities": {
+            "fold:A:2": 0.5546914339065552,
+            "wait": 0.4453085660934448
+          },
+          "latency_ms": 215.3102999982366,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "plan_text_only": false,
+      "repetition": 1,
+      "result": {
+        "choice": "fold:A:2",
+        "probabilities": {
+          "fold:A:2": 0.5546914339065552,
+          "wait": 0.4453085660934448
+        },
+        "latency_ms": 352.0831999994698,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text",
+          "image"
+        ],
+        "image_used": true,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 142.1824999997625,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "fold:A:2",
+          "probabilities": {
+            "fold:A:2": 0.5546914339065552,
+            "wait": 0.4453085660934448
+          },
+          "latency_ms": 209.90069999970729,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "plan_text_only": true,
+      "repetition": 0,
+      "result": {
+        "choice": "fold:A:2",
+        "probabilities": {
+          "fold:A:2": 0.728771486020938,
+          "wait": 0.271228513979062
+        },
+        "latency_ms": 279.14790000068024,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 143.39749999999185,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "fold:A:2",
+          "probabilities": {
+            "fold:A:2": 0.728771486020938,
+            "wait": 0.271228513979062
+          },
+          "latency_ms": 135.7504000006884,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    },
+    {
+      "plan_text_only": true,
+      "repetition": 1,
+      "result": {
+        "choice": "fold:A:2",
+        "probabilities": {
+          "fold:A:2": 0.728771486020938,
+          "wait": 0.271228513979062
+        },
+        "latency_ms": 272.4625000009837,
+        "model": {
+          "id": "mstrasser/Jeff-Qwen3.5-2B",
+          "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+          "release": "v1.2",
+          "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+          "device": "cuda:1",
+          "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+          "training": "none",
+          "adapter": null,
+          "checkpoint_sha256": {
+            "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+            "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+          }
+        },
+        "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+        "modalities": [
+          "text"
+        ],
+        "image_used": false,
+        "visual": {
+          "choice": "south",
+          "probabilities": {
+            "direct": 0.26051180002022983,
+            "south": 0.7394881999797702
+          },
+          "latency_ms": 139.69379999980447,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "d31cd227fcd5f4cefcf8480f010205fcbec0a68d8c12c199168e589553b153f1",
+          "modalities": [
+            "text",
+            "image"
+          ],
+          "image_used": true
+        },
+        "planning": {
+          "choice": "fold:A:2",
+          "probabilities": {
+            "fold:A:2": 0.728771486020938,
+            "wait": 0.271228513979062
+          },
+          "latency_ms": 132.76870000117924,
+          "model": {
+            "id": "mstrasser/Jeff-Qwen3.5-2B",
+            "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+            "release": "v1.2",
+            "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+            "device": "cuda:1",
+            "visual_accuracy": "unvalidated; upstream base documented English/text-only",
+            "training": "none",
+            "adapter": null,
+            "checkpoint_sha256": {
+              "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+              "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+            }
+          },
+          "image_sha256": "fcc116884f981a6c2ebf3c803c89e10d8de9c330d99a060e5906a0089ab41944",
+          "modalities": [
+            "text"
+          ],
+          "image_used": false
+        },
+        "excluded_candidate_ids": []
+      }
+    }
+  ],
+  "limitation": "Exact same actual snapshot and candidate descriptions for both modality conditions; no model training or forced action."
+}

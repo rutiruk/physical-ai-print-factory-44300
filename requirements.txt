@@ -1,0 +1,11 @@
+# Install CUDA PyTorch first; see README.
+genesis-world==1.4.5
+numpy==2.1.2
+Pillow==11.3.0
+torch==2.8.0
+scipy==1.15.3
+av==17.1.0
+imageio==2.38.0
+reportlab==5.1.0
+pytest==8.4.1
+pypdf==6.10.0

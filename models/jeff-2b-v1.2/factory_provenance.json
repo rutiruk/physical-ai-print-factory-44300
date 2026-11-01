@@ -1,0 +1,12 @@
+{
+  "id": "mstrasser/Jeff-Qwen3.5-2B",
+  "revision": "d2ffa3a22f3dea8cfdd67bac595d4e8ad3681b2e",
+  "release": "v1.2",
+  "vendor_revision": "3720e7c66d73b79a6e90189f3d5b0d6ecf03ddc0",
+  "checkpoint_sha256": {
+    "model.safetensors": "ccb083d62bfd84e32b9013d40f206200df509d55727c8e1e33144b01c3759b2c",
+    "readout.safetensors": "4387eddad3d463c808ff89a44908255fab1134f818d86ec82eaf85f90762f939"
+  },
+  "training": "none",
+  "adapter": null
+}

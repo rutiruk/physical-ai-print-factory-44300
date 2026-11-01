@@ -1,0 +1,11 @@
+# Torch/torchvision CUDA wheels are installed explicitly by setup_navigation.ps1.
+numpy==2.1.2
+Pillow==11.3.0
+PyYAML==6.0.1
+pytest==8.4.1
+efficientnet-pytorch==0.7.1
+diffusers==0.27.2
+huggingface-hub==0.25.2
+einops==0.8.2
+gdown==6.5.1
+warmup-scheduler==0.3

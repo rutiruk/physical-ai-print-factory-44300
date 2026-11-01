@@ -1,0 +1,8 @@
+<mujoco model="pile_feeder_lift">
+  <worldbody>
+    <body name="platform" pos="-2 1.25 .375">
+      <joint name="height" type="slide" axis="0 0 1" range="0 .04" damping="5"/>
+      <geom type="box" size=".24 .155 .02" mass="2" rgba=".72 .75 .79 1"/>
+    </body>
+  </worldbody>
+</mujoco>
