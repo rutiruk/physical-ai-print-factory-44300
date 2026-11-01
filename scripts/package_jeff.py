@@ -5,21 +5,25 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def main():
-    result=json.loads((ROOT/'output/jeff_factory/jeff/result.json').read_text(encoding='utf-8'))
+    result_path=ROOT/'output/jeff_factory/jeff_single/result.json'
+    result=json.loads(result_path.read_text(encoding='utf-8'))
     if not (result.get('success') and result.get('status')=='complete'):
         raise RuntimeError('Cannot package an unverified factory run as final submission')
+    audit=json.loads((ROOT/'output/jeff_factory/artifact_check.json').read_text(encoding='utf8'))
+    if not audit.get('success') or not audit.get('video',{}).get('continuous') or audit.get('hashes',{}).get(str(result_path.relative_to(ROOT)))!=hashlib.sha256(result_path.read_bytes()).hexdigest():
+        raise RuntimeError('A matching successful continuous-video artifact audit is required')
     names=['README.md','README_JEFF.md','SUBMISSION.md','THIRD_PARTY.md','.gitignore','pyproject.toml',
            'requirements.txt','requirements-local-lock.txt','requirements-jeff.txt','requirements-navigation.txt','run.ps1','run-jeff.ps1','setup-jeff-factory.ps1']
     names += [f'src/print_factory/{n}.py' for n in ['__init__','scene','printing','print_scene','dispatch',
-              'video','json_worker','jeff_policy','navigation_policy','navigation_guard','navigation_motion','factory_dashboard','run_artifacts']]
+              'video','json_worker','jeff_policy','navigation_policy','navigation_guard','navigation_motion','scenarios','factory_dashboard','run_artifacts']]
     names += [f'assets/{n}.xml' for n in ['paper_amr','paper_loader','paper_feeder','gather_bridge','gather_bridge_multi']]
     names += ['assets/navigation/README.md','assets/navigation/manifest.json']
     names += [f'scripts/{n}.py' for n in ['jeff_factory_demo','jeff_worker','navigation_worker','nav_factory_probe','dock_navigation_probe',
                'navigation_probe','setup_jeff','jeff_probe','jeff_probe_roi','compose_jeff_video',
-               'summarize_jeff_factory','compose_amr_motion_check','report_jeff','report','package_jeff','check_jeff_artifacts']]
+               'summarize_jeff_factory','compose_continuous_jeff_video','compose_amr_motion_check','report_jeff','report','package_jeff','check_jeff_artifacts']]
     names += ['scripts/setup_navigation.ps1']
     names += [f'tests/test_{n}.py' for n in ['printing','dispatch','dynamic_dispatch','jeff_policy',
-               'navigation_policy','navigation_guard','navigation_motion','factory_dashboard','jeff_video','jeff_artifacts','run_artifacts']]
+               'navigation_policy','navigation_guard','navigation_motion','factory_dashboard','jeff_video','jeff_artifacts','continuous_demo','run_artifacts']]
     names += ['docs/superpowers/specs/2026-11-01-jeff-factory-design.md',
               'docs/superpowers/plans/2026-11-01-jeff-factory.md','docs/superpowers/README_JEFF_RUNTIME.md',
               'docs/superpowers/specs/2026-11-01-print-process-design.md',
@@ -39,6 +43,9 @@ def main():
     names += ['output/jeff_factory/dock_probe/centered_fixed/result.json',
               'output/jeff_factory/dock_probe/recorded_fixed/result.json',
               'output/jeff_factory/jeff/failed_dock_capture.json','output/jeff_factory/jeff/failed_boundary_before_recovery.json']
+    names += ['docs/superpowers/specs/2026-11-02-continuous-demo.md','docs/superpowers/plans/2026-11-02-continuous-demo.md']
+    names += [f'output/jeff_factory/jeff_single/{name}' for name in ['result.json','video_edit.json','motion_samples.json','motion_audit.json','handoff_motion_check.json','completed_jeff.png']]
+    names += ['output/jeff_factory/three_job_reference/PrintFactory_Jeff_report.pdf','output/jeff_factory/three_job_reference/artifact_check.json']
     # Decision cameras are evidence, whereas high-frequency nav images remain local.
     for decision in result.get('decisions',[]):
         for key in ('image_path','corridor_image_path'):

@@ -39,9 +39,10 @@ def summarize(path):
 
 if __name__=='__main__':
     out=ROOT/'output/jeff_factory';report={}
-    for policy in ('jeff','rules'):
+    for policy in ('jeff_single','jeff','rules'):
         path=out/policy/'result.json'
         if path.exists():report[policy]=summarize(path)
+    report['primary']='jeff_single'
     report['comparison_note']='No controlled matched comparison establishes AI necessity or speed superiority. The saved rule-reference run was interrupted during motion-controller repairs; its incomplete count must not be compared as a completed benchmark.'
     (out/'evaluation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))

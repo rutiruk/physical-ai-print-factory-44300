@@ -1,0 +1,13 @@
+{
+  "samples": 6755,
+  "adjacent_physics_ticks": 6739,
+  "safety_stop_samples": 0,
+  "max_linear_acceleration_m_s2": 0.6000000000005462,
+  "max_angular_acceleration_rad_s2": 0.9000000000008194,
+  "linear_limit_violations": 0,
+  "angular_limit_violations": 0,
+  "internal_nodes_without_stop": 5,
+  "internal_nodes_with_nonzero_command": 5,
+  "scope": "Applied learned-navigation commands, not a bound on rigid-body acceleration or emergency stops.",
+  "measured_handoff_speed_min_m_s": 0.39989358409604164
+}

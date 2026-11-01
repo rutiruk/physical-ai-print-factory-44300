@@ -23,3 +23,14 @@ def test_annotation_preserves_decisions_and_marks_mutable_observation():
     assert decision['choice'] == 'wait' and decision['probabilities'] == {'wait': 1}
     assert 'not an immutable input capture' in result['observation_history_note']
     assert not audit.annotate_legacy_observations(result)
+
+
+def test_single_scenario_requires_one_hundred_copies_and_four_real_pushes():
+    result=dict(status='complete',success=True,scenario='single',
+                state=dict(jobs=[dict(id='B',pages=4,copies=100,completed=120.,due=350.)]),
+                navigation=[dict(model='vint'),dict(model='nomad')],
+                events=[dict(event='PHYSICAL_PUSH',supported=True) for _ in range(4)]+
+                       [dict(event='PROCESS_COMPLETE',machine='finishing',job='B',binding='fold_only',stitched=False)])
+    assert audit.check_summary(result)['errors']==[]
+    result['events'].pop(0)
+    assert any('4 PHYSICAL_PUSH' in error for error in audit.check_summary(result)['errors'])

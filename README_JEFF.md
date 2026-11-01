@@ -16,7 +16,7 @@ py -3.10 -m venv .venv
 .\run-jeff.ps1
 ```
 
-再実行は同じポリシーの最新成果物を更新します。実行結果は `output/jeff_factory/jeff/result.json` です。`success: true`、`status: complete`、3ジョブ完成、支持条件を満たす16回の移載を確認して完成と判定します。実行途中の動画・JSONは完成品ではありません。
+標準起動は単一ジョブB（4ページ100部）です。実行結果は `output/jeff_factory/jeff_single/result.json`。`success: true`、`status: complete`、1ジョブ100部完成、支持条件を満たす4回の移載と両移動モデルの実推論を確認します。複数ジョブ版は `run-jeff.ps1 -Scenario multi -MaxSeconds 1200` で明示し、旧 `output/jeff_factory/jeff` を使います。実行途中の動画・JSONは完成品ではありません。
 
 ## 誰が何をするか
 
@@ -31,7 +31,9 @@ py -3.10 -m venv .venv
 
 俯瞰RGBは同期動画と観測証跡に使います。Jeffの作業選択段はテキスト入力で、通路の視覚段とは入力を分けています。ViNT / NoMaDは移動ロボット基盤モデルで、マニピュレータVLAではありません。紙束の搬送・支持・横押しは物理ですが、インキ、柔軟な紙、刃、針、単葉給紙は物理計算していません。原紙はジョブに共通の100枚束で、印刷開始時に割り当てます。模様は表示用の代理表現です。
 
-## 印刷ジョブと設備
+## 複数ジョブ版で扱える製品と設備
+
+提出用はこのうちBだけをSIM 0秒に投入します。A/Cは提出動画では実行しません。以下は維持している複数ジョブシナリオの設定です。
 
 | ジョブ | 到着 [秒] | 製品 | 締切 [秒] |
 |---|---:|---|---:|
@@ -47,9 +49,7 @@ SRA3 100g/m²、計400枚から冊子100冊とリーフレット200部を製造�
 
 ```powershell
 .venv\Scripts\python.exe scripts/summarize_jeff_factory.py
-.venv\Scripts\python.exe scripts/compose_jeff_video.py
-Copy-Item output/PrintFactory_Jeff_demo.mp4 output/PrintFactory_Jeff_demo_44300.mp4
-.venv\Scripts\python.exe scripts/compose_amr_motion_check.py
+.venv\Scripts\python.exe scripts/compose_continuous_jeff_video.py
 .venv\Scripts\python.exe scripts/report_jeff.py --output output/PrintFactory_Jeff_report.pdf
 Copy-Item output/PrintFactory_Jeff_report.pdf output/説明資料_PAI最終課題_44300.pdf
 .venv\Scripts\python.exe scripts/check_jeff_artifacts.py
@@ -57,7 +57,7 @@ Copy-Item output/PrintFactory_Jeff_report.pdf output/説明資料_PAI最終課�
 Copy-Item output/submission_jeff_code.zip output/submission_jeff_code_44300.zip
 ```
 
-動画は工場俯瞰、到着通知、Jeffの判断、AMRの担当・積載物、工程進捗を共通SIM時刻で表示します。2倍速と省略を明記し、全移載を残した1〜3分へ編集します。編集区間は `video_edit.json` に記録します。ソースZIPには重み・仮想環境・講義資料を含めません。
+提出動画は単一ジョブの全工程をカットなしで示します。20fpsの撮影元を全フレーム40fpsで保存する2倍速で、間引き・補間・静止画カードはありません。SIMは0.05秒刻みで連続し、完了後も4 SIM秒の実動作を含めます。180秒超の結果は出力を拒否します。工場俯瞰、到着通知、Jeffの判断、AMRの担当・積載物、工程進捗は同じSIM時刻です。編集区間は `video_edit.json` に記録します。ソースZIPには重み・仮想環境・講義資料を含めません。
 
 移動モデルが通路から逸脱した場合、従来の監視が停止だけを行います。Jeffが再試行を選んだ場合にのみ、向きを整え、RGB履歴と目標画像を更新して同じ基盤モデルの移動を再開します。再試行は局所目標ごとに最大4回です。従来の直線軌道で失敗を代行しません。
 

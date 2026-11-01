@@ -18,6 +18,7 @@ from print_factory.video import VideoWriter
 from print_factory.run_artifacts import write_result
 from print_factory.navigation_guard import recovery_reason
 from print_factory.navigation_motion import MotionLimiter, local_goal_plan
+from print_factory.scenarios import factory_jobs,scenario_targets
 from nav_factory_probe import camera_pose
 
 GATHER_X={'A':1.6,'B':2.,'C':2.4}
@@ -26,13 +27,16 @@ PARKS=((-2.,-1.65),(2.,-1.65))
 
 class Demo:
     def __init__(self,args):
-        self.args=args;self.out=ROOT/'output/jeff_factory'/args.policy;self.out.mkdir(parents=True,exist_ok=True)
-        self.result=dict(success=False,status='initializing',policy=args.policy)
+        self.args=args;self.scenario=getattr(args,'scenario','multi')
+        name=args.policy+('_single' if self.scenario=='single' else '')
+        self.out=ROOT/'output/jeff_factory'/name;self.out.mkdir(parents=True,exist_ok=True)
+        self.result=dict(success=False,status='initializing',policy=args.policy,scenario=self.scenario,
+                         expected=scenario_targets(self.scenario))
         write_result(self.out/'result.json',self.result)
         self.jeff=None;self.nav=None;self.writer=None
-        self.factory=Factory([Job('A',0,600,pages=8,description='Regular 8-page brochure'),
-                              Job('B',8.5,350,pages=4,description='Urgent 4-page leaflet'),
-                              Job('C',23.7,750,pages=4,description='Additional folded 4-page leaflet')])
+        self.factory=Factory(factory_jobs(self.scenario))
+        self.completed_at=None
+        self.completion_hold=4. if self.scenario=='single' else 0.
         self.slots={}
         # Four interchangeable 100-sheet stock piles. Job identity is assigned at print start.
         specs=[FormLot('SRA3',1,1,100,4) for _ in range(4)]
@@ -380,7 +384,9 @@ class Demo:
                     print(f't={self.factory.now:.1f} jobs={len(self.factory.jobs)} decisions={len(self.decisions)} nav={len(self.movements)}',flush=True)
                     self.persist('running')
                 if not self.factory.pending and all(j.completed is not None for j in self.factory.jobs.values()):
-                    self.result['success']=True;break
+                    if self.completed_at is None:self.completed_at=self.factory.now
+                    if self.ticks%5==0 and self.factory.now-self.completed_at>=self.completion_hold:
+                        self.result['success']=True;break
             self.persist('complete' if self.result['success'] else 'time_limit')
         except BaseException as exc:
             self.result['error']=f'{type(exc).__name__}: {exc}';self.persist('failed');raise
@@ -405,4 +411,5 @@ class Demo:
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--policy',choices=['jeff','rules'],default='jeff');p.add_argument('--max-seconds',type=float,default=1200)
+    p.add_argument('--scenario',choices=['single','multi'],default='multi')
     Demo(p.parse_args()).run()

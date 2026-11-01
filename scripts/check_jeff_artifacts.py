@@ -13,6 +13,8 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from print_factory.scenarios import scenario_targets
 LEGACY_NOTE = ('not an immutable input capture; actual candidates/image hashes and '
                'event log retained; new source fix covered by unit-test. '
                'live_state_metadata contains legacy references to mutable world metadata, '
@@ -44,16 +46,19 @@ def annotate_legacy_observations(result):
 
 def check_summary(result):
     errors = []
+    try:target=scenario_targets(result.get('scenario','multi'))
+    except ValueError:
+        errors.append('Unknown factory scenario');target=scenario_targets('multi')
     if result.get('success') is not True or result.get('status') != 'complete':
         errors.append('Run must have success=true and status=complete')
     jobs = result.get('state', {}).get('jobs', [])
     completed = [job for job in jobs if job.get('completed') is not None]
     copies = sum(job.get('copies', 0) for job in completed)
-    if len(jobs) != 3 or len(completed) != 3 or copies != 300:
-        errors.append('Expected 3 completed jobs totaling 300 copies')
+    if len(jobs) != target['jobs'] or len(completed) != target['jobs'] or copies != target['copies']:
+        errors.append(f"Expected {target['jobs']} completed jobs totaling {target['copies']} copies")
     pushes = [event for event in result.get('events', []) if event.get('event') == 'PHYSICAL_PUSH']
-    if len(pushes) != 16:
-        errors.append(f'Expected 16 PHYSICAL_PUSH events, got {len(pushes)}')
+    if len(pushes) != target['pushes']:
+        errors.append(f"Expected {target['pushes']} PHYSICAL_PUSH events, got {len(pushes)}")
     if not all(event.get('supported') is True for event in pushes):
         errors.append('Every physical push must have supported=true')
     counts = {name: sum(str(row.get('model', '')).lower() == name for row in result.get('navigation', []))
@@ -79,6 +84,23 @@ def _resolve_image(value, folder):
     if relocated.exists():
         return relocated
     raise FileNotFoundError(path)
+
+
+def continuous_errors(edit,simulation_seconds):
+    errors=[]
+    for key,value in dict(continuous=True,playback_speed=2,source_fps=20,fps=40,
+                          cuts=[],dropped_frames=0,interpolated_frames=0,closing_summary_seconds=0,
+                          source_sim_first_frame_s=.05,sim_frame_step_s=.05).items():
+        if edit.get(key)!=value:errors.append('Continuous video invalid '+key)
+    count=edit.get('frame_count',0)
+    if not count or count!=edit.get('source_frame_count'):errors.append('Continuous video omitted source frames')
+    if abs(count/20-simulation_seconds)>1e-6:errors.append('Continuous source frames do not span the full SIM clock')
+    keep=edit.get('keep',[])
+    if len(keep)!=1 or len(keep[0])!=2 or abs(keep[0][0])>1e-6 or abs(keep[0][1]-simulation_seconds)>1e-6:
+        errors.append('Continuous video must keep the entire run')
+    if abs(edit.get('duration_seconds',0)*2-simulation_seconds)>1e-6:errors.append('Continuous playback does not match SIM duration')
+    if abs(edit.get('source_sim_last_frame_s',0)-simulation_seconds)>1e-6:errors.append('Continuous final frame is missing')
+    return errors
 
 
 def check(folder, video, pdf, destination):
@@ -193,6 +215,12 @@ def check(folder, video, pdf, destination):
         edit = json.loads(edit_path.read_text(encoding='utf-8'))
         if edit.get('playback_speed') != 2:
             errors.append('Video edit must be 2x playback')
+        if result.get('scenario')=='single':
+            errors.extend(continuous_errors(edit,result['simulation_seconds']))
+            verify_file(folder/'factory_raw.mp4',edit.get('source_sha256'))
+            verify_file(result_path,edit.get('result_sha256'))
+            if not edit.get('source_sha256') or not edit.get('result_sha256'):
+                errors.append('Continuous source/result hashes are required')
         keep = edit.get('keep', [])
         starts = {}
         for event in sorted(result['events'], key=lambda e: e['time_s']):
@@ -218,11 +246,14 @@ def check(folder, video, pdf, destination):
         count = 0
         with av.open(str(video)) as source:
             rate = float(source.streams.video[0].average_rate)
-            if abs(rate-20) > .001:
-                errors.append(f'Video FPS is {rate}, expected 20')
+            expected_rate=40 if edit and edit.get('continuous') else 20
+            if abs(rate-expected_rate) > .001:
+                errors.append(f'Video FPS is {rate}, expected {expected_rate}')
             for frame in source.decode(video=0):
                 if frame.width != 1440 or frame.height != 900:
                     raise ValueError('Video frame dimensions must all be 1440x900')
+                if edit and edit.get('continuous') and abs(float(frame.time)-count/40)>1e-6:
+                    raise ValueError('Continuous output timestamps skip frames')
                 count += 1
         duration = count/rate
         report['video'] = dict(frame_count=count, fps=rate, duration_seconds=duration, all_frames_decoded=True)
@@ -231,6 +262,18 @@ def check(folder, video, pdf, destination):
         if edit and (edit.get('frame_count') != count or abs(edit.get('duration_seconds', 0)-duration) > .001):
             errors.append('Decoded video frame count/duration disagree with edit manifest')
         verify_file(video)
+        if edit and edit.get('continuous'):
+            source_count=0
+            with av.open(str(folder/'factory_raw.mp4')) as source:
+                if abs(float(source.streams.video[0].average_rate)-20)>.001:
+                    raise ValueError('Continuous input is not 20 fps')
+                for frame in source.decode(video=0):
+                    if abs(float(frame.time)-source_count/20)>1e-6:
+                        raise ValueError('Continuous source timestamps skip frames')
+                    source_count+=1
+            if source_count!=count:errors.append('Source and output frame counts differ; continuous video may omit frames')
+            report['video'].update(source_frame_count=source_count,all_source_frames_retained=source_count==count,
+                                   sim_clock_step_s=.05,continuous=True)
     attempt('video', check_video)
 
     def check_pdf():
@@ -254,8 +297,8 @@ def check(folder, video, pdf, destination):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--folder', type=Path, default=ROOT/'output/jeff_factory/jeff')
-    parser.add_argument('--video', type=Path, default=ROOT/'output/PrintFactory_Jeff_demo.mp4')
+    parser.add_argument('--folder', type=Path, default=ROOT/'output/jeff_factory/jeff_single')
+    parser.add_argument('--video', type=Path, default=ROOT/'output/PrintFactory_Jeff_demo_44300.mp4')
     parser.add_argument('--pdf', type=Path, default=ROOT/'output/PrintFactory_Jeff_report.pdf')
     parser.add_argument('--output', type=Path, default=ROOT/'output/jeff_factory/artifact_check.json')
     args = parser.parse_args()

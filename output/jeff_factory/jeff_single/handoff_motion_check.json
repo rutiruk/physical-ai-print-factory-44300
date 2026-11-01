@@ -1,0 +1,27 @@
+[
+  {
+    "amr": 0,
+    "time_s": 46.3,
+    "minimum_measured_speed": 0.3999550384865397
+  },
+  {
+    "amr": 0,
+    "time_s": 87.24,
+    "minimum_measured_speed": 0.39989358409604164
+  },
+  {
+    "amr": 1,
+    "time_s": 107.94,
+    "minimum_measured_speed": 0.3999124851622911
+  },
+  {
+    "amr": 1,
+    "time_s": 108.98,
+    "minimum_measured_speed": 0.39995918170580724
+  },
+  {
+    "amr": 1,
+    "time_s": 144.9,
+    "minimum_measured_speed": 0.3999319628381301
+  }
+]

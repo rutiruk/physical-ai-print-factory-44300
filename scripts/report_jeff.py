@@ -7,11 +7,13 @@ from pathlib import Path
 import argparse
 import json
 import statistics
+import sys
 from xml.sax.saxutils import escape
 
 from report import (A4, OUT, ROOT, Image, PageBreak, SimpleDocTemplate, Spacer,
                     colors, footer, p, styles, table)
 
+sys.path.insert(0,str(ROOT/'src'))
 FOLDER = OUT / 'jeff_factory'
 WIDTH = A4[0] - 84
 
@@ -48,12 +50,18 @@ def condition_probability(filename, condition, choice):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=FOLDER / 'report_draft.pdf')
+    parser.add_argument('--folder', type=Path, default=FOLDER/'jeff_single')
     args = parser.parse_args()
-    run = read(FOLDER / 'jeff/result.json')
+    args.folder=args.folder.resolve()
+    run = read(args.folder/'result.json')
+    single=run.get('scenario')=='single'
+    edit=read(args.folder/'video_edit.json')
+    from print_factory.scenarios import scenario_targets
+    target=scenario_targets(run.get('scenario','multi'))
     events, decisions, nav = (run.get(k, []) for k in ('events', 'decisions', 'navigation'))
     jobs = run.get('state', {}).get('jobs', [])
     done = [j for j in jobs if j.get('completed') is not None]
-    verified = run.get('status') == 'complete' and run.get('success') is True and len(done) == 3
+    verified = run.get('status') == 'complete' and run.get('success') is True and len(done) == target['jobs']
     badge = '全ジョブ完了（ログ確認）' if verified else '検証中 / 全工程の成功は未確定'
     pushes = [e for e in events if e.get('event') == 'PHYSICAL_PUSH']
     models = run.get('models', {})
@@ -63,17 +71,19 @@ def main():
     styles['p'].fontSize = 9.1; styles['p'].leading = 14.7; styles['p'].spaceAfter = 6
     styles['h'].fontSize = 12.5; styles['h'].leading = 18; styles['h'].spaceBefore = 10
     styles['small'].fontSize = 7.6; styles['small'].leading = 11.2
+    arrivals={e['job']:e['time_s'] for e in events if e.get('event')=='JOB_ARRIVAL'}
+    job_rows=[[j['id'],f"{arrivals.get(j['id'],0):.1f}",f"{j['pages']}p {'冊子' if j['pages']>=8 else '二つ折り'} / {j['copies']}部",str(j['due'])] for j in jobs]
+    process_quantity=('本動画はBの1ジョブ：原紙400枚の在庫から100枚を使用し、4ページの二つ折りリーフレット100部を作る。針綴じは行わない。' if single else '原紙400枚をAの2フォーム・B/C各1フォームへ割り当て、合計300部（冊子100冊・リーフレット200部）を作る。')
     flow = [p('Jeff PrintFactory / 44300', 'title'),
-            p('非同期の印刷工程を、基盤モデルと物理でつなぐ。', 'sub'),
+            p('印刷から梱包まで、SIM時刻を飛ばさず連続収録。' if single else '非同期の印刷工程を、基盤モデルと物理でつなぐ。', 'sub'),
             p(badge, 'h'),
-            p('固定通路カメラを目、異なる移動基盤モデルで動く2台のAMRを足、接触式の横押しローダーを手とするGenesis工場。後着の短納期ジョブと設備状態を見て、Jeffが実行可能な作業から次の作業・担当・経路を選ぶ。公開重みをそのまま推論し、追加学習・追加学習データ収集・アダプタ適用は行わない。'),
-            table([['ジョブ','到着 [s]','製品 / 部数','締切 [s]'],
-                   ['A','0.0','8p冊子 / 100冊','600'],['B','8.5','4p二つ折り / 100部','350'],
-                   ['C','23.7','4p二つ折り / 100部','750']], [90,95,WIDTH-280,95]),
+            p('固定通路カメラを目、異なる移動基盤モデルで動く2台のAMRを足、接触式の横押しローダーを手とするGenesis工場。ジョブと設備状態を見て、Jeffが実行可能な作業から次の作業・担当・経路を選ぶ。公開重みをそのまま推論し、追加学習・追加学習データ収集・アダプタ適用は行わない。'),
+            table([['ジョブ','到着 [s]','製品 / 部数','締切 [s]']]+job_rows, [90,95,WIDTH-280,95]),
             p('工程と設備が決める制約', 'h'),
-            p('校了・面付け承認 → 枚葉両面UV印刷 → UV完了・検査信号・紙揃え → 二つ折り → ジョブ別仕分け → 冊子は丁合・中綴じ、1枚折りのリーフレットは綴じ省略 → 断裁 → 梱包。原紙400枚をAの2フォーム・B/C各1フォームへ割り当て、合計300部（冊子100冊・リーフレット200部）を作る。白紙在庫は印刷開始時にジョブへ割り当てる。'),
+            p('校了・面付け承認 → 枚葉両面UV印刷 → UV完了・検査信号・紙揃え → 二つ折り → ジョブ別仕分け → 冊子は丁合・中綴じ、1枚折りのリーフレットは綴じ省略 → 断裁 → 梱包。'+process_quantity+'白紙在庫は印刷開始時にジョブへ割り当てる。'),
             p('折り出口が1カセットのため各ジョブの内側折丁を先に処理する。丁合はx=1.6 / 2.0 / 2.4 mの3カセットで分離し、別ジョブの折丁を混ぜない。通路の排他トークンは同時に動くAMRを1台に制限する。加工と判断は並行するが、2台が同時走行する実験ではない。')]
-    image = FOLDER / 'jeff/latest.png'
+    image = args.folder/'completed_jeff.png'
+    if not image.exists():image=args.folder/'latest.png'
     if image.exists():
         from PIL import Image as PILImage
         with PILImage.open(image) as im:
@@ -90,8 +100,8 @@ def main():
              p('保存ログからの実測（生成時点）','h'),
              table([['項目','記録値'],
                     ['実行状態', f"{safe(run.get('status','未開始'))} / SIM {run.get('simulation_seconds',0):.2f} s / {badge}"],
-                    ['実行の実時間',f'{run.get("wall_seconds",0):.2f} s（初期化後の実行ループ、映像編集前）'],
-                    ['ジョブ・完成部数',f'{len(done)}/3ジョブ、{sum(j.get("copies",0) for j in done)}/300部'],
+                    ['実行時間 / 動画',f'{run.get("wall_seconds",0):.2f} s（初期化除外） / 動画 {edit.get("duration_seconds",0):.2f} s'+('（2倍速・カットなし）' if single else '（2倍速・省略あり）')],
+                    ['ジョブ・完成部数',f'{len(done)}/{target["jobs"]}ジョブ、{sum(j.get("copies",0) for j in done)}/{target["copies"]}部'],
                     ['移載支持条件', f'{sum(bool(e.get("supported")) for e in pushes)}/{len(pushes)}件（支持・高さ・向きの実装判定）'],
                     ['Jeff判断',f'{len(decisions)}回、推論中央値 '+median([d['latency_ms'] for d in decisions if 'latency_ms' in d])],
                     ['Jeffの再試行選択',f'{sum(e.get("event")=="NAV_RECOVERY_CHOSEN" for e in events)}回（停止後の再試行も作業/待機とともに選択）'],
@@ -117,9 +127,9 @@ def main():
              p('「従来制御でもよいのでは？」への回答','h'),
              p('その通りである。既知地図の搬送・工程管理は従来手法で実装でき、AIの不可欠性・速度優位性・最適性は未立証。本作の検証点は、公開モデルの実推論が観測から作業選択と移動waypointへ接続されることにある。目標画像・既知通路・候補記述への依存、単一試行、未知工場・実機転移、柔軟紙・単葉給紙、品質検査AIは未検証。'),
              p('講義要件と提出の確認','h'),
-             p('物理シミュレータ：Genesis。基盤モデル：Jeff / ViNT / NoMaDの公開重み。学習：追加なし。動画：俯瞰・到着通知・判断・AMR積載を共通SIM時刻に同期し、2倍速と省略区間を明記する。完成判定はresult.json、映像編集はmanifestを照合してから行う。提出名：説明資料_PAI最終課題_44300.pdf。コード・動画・PDFは<link href="https://github.com/rutiruk/physical-ai-print-factory-44300">公開GitHubリポジトリ</link>に配置。YouTube公開・OmniCampusへの提出は未実施。'),
+             p('物理シミュレータ：Genesis。基盤モデル：Jeff / ViNT / NoMaDの公開重み。学習：追加なし。動画：俯瞰・到着通知・判断・AMR積載を共通SIM時刻に同期し、'+('20fpsの撮影元の全フレームを40fpsにして2倍速で保持し、カット・間引き・静止画カードは使わない。完了後も4 SIM秒を実際に進めて記録する。3ジョブ版は参考ログとして別保存する。' if single else '2倍速と省略区間を明記する。')+'完成判定はresult.json、映像はmanifestと全フレームを照合する。提出名：説明資料_PAI最終課題_44300.pdf。コード・動画・PDFは<link href="https://github.com/rutiruk/physical-ai-print-factory-44300">公開GitHubリポジトリ</link>に配置。YouTube公開・OmniCampusへの提出は未実施。'),
              p('一次資料・同梱証跡','h'),
-             p('<link href="https://github.com/firelex/jeff">Jeff公式コード</link> / <link href="https://huggingface.co/jeff-legacy/Jeff-Qwen3.5-2B">Jeff 2B v1.2公開重み</link> / <link href="https://github.com/robodhruv/visualnav-transformer">ViNT / NoMaD公式実装</link><br/><link href="https://www.dnp.co.jp/media/detail/20168683_1563.html">DNP 製版</link> / <link href="https://www.dnp.co.jp/media/detail/20169183_1563.html">DNP 印刷</link> / <link href="https://www.dnp.co.jp/media/detail/20169338_1563.html">DNP 製本</link><br/>再実行：setup-jeff-factory.ps1、scripts/jeff_factory_demo.py。証跡：output/jeff_factory/jeff/result.json、各probe JSON、画像hash、モデルrevision。詳細はdocs/superpowers/README_JEFF_RUNTIME.md。評価表は集計途中のevaluation.jsonを転記せず、保存結果を直接読む。モデル重み・仮想環境・講義資料はソース提出ZIP外。','small')]
+             p('<link href="https://github.com/firelex/jeff">Jeff公式コード</link> / <link href="https://huggingface.co/jeff-legacy/Jeff-Qwen3.5-2B">Jeff 2B v1.2公開重み</link> / <link href="https://github.com/robodhruv/visualnav-transformer">ViNT / NoMaD公式実装</link><br/><link href="https://www.dnp.co.jp/media/detail/20168683_1563.html">DNP 製版</link> / <link href="https://www.dnp.co.jp/media/detail/20169183_1563.html">DNP 印刷</link> / <link href="https://www.dnp.co.jp/media/detail/20169338_1563.html">DNP 製本</link><br/>再実行：setup-jeff-factory.ps1、scripts/jeff_factory_demo.py --scenario single。証跡：'+str(args.folder.relative_to(ROOT)).replace('\\','/')+'/result.json、各probe JSON、画像hash、モデルrevision。詳細はdocs/superpowers/README_JEFF_RUNTIME.md。評価表は集計途中のevaluation.jsonを転記せず、保存結果を直接読む。モデル重み・仮想環境・講義資料はソース提出ZIP外。','small')]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     SimpleDocTemplate(str(args.output),pagesize=A4,leftMargin=42,rightMargin=42,
                       topMargin=34,bottomMargin=52,title='Jeff PrintFactory - Physical AI Final Assignment').build(flow,onFirstPage=footer,onLaterPages=footer)

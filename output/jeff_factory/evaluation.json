@@ -1,4 +1,100 @@
 {
+  "jeff_single": {
+    "status": "complete",
+    "success": true,
+    "simulation_seconds": 185.70000000000002,
+    "wall_seconds": 275.76615689999926,
+    "arrivals": [
+      {
+        "time_s": 0.0,
+        "event": "JOB_ARRIVAL",
+        "job": "B",
+        "due": 350.0,
+        "pages": 4,
+        "copies": 100
+      }
+    ],
+    "jobs_completed": 1,
+    "jobs_observed": 1,
+    "units_completed": 100,
+    "booklets_completed": 0,
+    "leaflets_completed": 100,
+    "navigation_recoveries": 1,
+    "tardiness_seconds": {
+      "B": 0
+    },
+    "physical_pushes": 4,
+    "supported_pushes": 4,
+    "stale_rejections": 0,
+    "dispatch_latency": {
+      "count": 6,
+      "median_ms": 516.2512500010052,
+      "p95_ms": 1140.6090000018594
+    },
+    "vision_latency": {
+      "count": 6,
+      "median_ms": 367.514100000335,
+      "p95_ms": 1001.5615000011167
+    },
+    "navigation": {
+      "vint": {
+        "inferences": 102,
+        "latency": {
+          "count": 102,
+          "median_ms": 55.705899999338726,
+          "p95_ms": 79.83409999906144
+        }
+      },
+      "nomad": {
+        "inferences": 94,
+        "latency": {
+          "count": 94,
+          "median_ms": 153.50729999954638,
+          "p95_ms": 174.3456000003789
+        }
+      }
+    },
+    "alternatives_per_decision": [
+      2,
+      5,
+      2,
+      3,
+      2,
+      2
+    ],
+    "choices": [
+      {
+        "time_s": 0.85,
+        "choice": "print:B:1"
+      },
+      {
+        "time_s": 5.23,
+        "choice": "carry:B:1:press:folder:0@south"
+      },
+      {
+        "time_s": 73.51,
+        "choice": "fold:B:1"
+      },
+      {
+        "time_s": 76.81,
+        "choice": "carry:B:1:folder:gather:1@south"
+      },
+      {
+        "time_s": 155.20000000000002,
+        "choice": "recover:1"
+      },
+      {
+        "time_s": 174.69,
+        "choice": "finish:B"
+      }
+    ],
+    "claims": {
+      "training": "none",
+      "speed_superiority": "not established",
+      "visual_generalization": "not established; controlled pair only",
+      "physical_ai_necessity": "not established; classical navigation could solve known-map transport"
+    }
+  },
   "jeff": {
     "status": "complete",
     "success": true,
@@ -298,5 +394,6 @@
       "physical_ai_necessity": "not established; classical navigation could solve known-map transport"
     }
   },
+  "primary": "jeff_single",
   "comparison_note": "No controlled matched comparison establishes AI necessity or speed superiority. The saved rule-reference run was interrupted during motion-controller repairs; its incomplete count must not be compared as a completed benchmark."
 }

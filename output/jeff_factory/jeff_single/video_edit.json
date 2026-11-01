@@ -1,0 +1,27 @@
+{
+  "continuous": true,
+  "frame_count": 3714,
+  "source_frame_count": 3714,
+  "source_fps": 20,
+  "fps": 40,
+  "playback_speed": 2,
+  "duration_seconds": 92.85,
+  "cuts": [],
+  "keep": [
+    [
+      0.0,
+      185.7
+    ]
+  ],
+  "source_sim_first_frame_s": 0.05,
+  "sim_frame_step_s": 0.05,
+  "source_sim_last_frame_s": 185.7,
+  "dropped_frames": 0,
+  "interpolated_frames": 0,
+  "closing_summary_seconds": 0,
+  "source": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\jeff_factory\\jeff_single\\factory_raw.mp4",
+  "output": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\PrintFactory_Jeff_demo_44300.mp4",
+  "source_sha256": "d2c4eb81f6525bc3590a8bbba94dd8a5e5c35fd04e51698157a19381870cbc26",
+  "result_sha256": "8019c57e51088ec4b45adac4d2358c0b27f3e1cbe6528131923d6776c6a4c649",
+  "description": "Every source frame retained in original order. No cuts, interpolation, synthetic completion, or static closing card."
+}
