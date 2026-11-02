@@ -1,0 +1,56 @@
+{
+  "success": true,
+  "run_folder": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\v2\\fleet_20261102_101250",
+  "video": "D:\\34_Physical_AI_2026\\ouyou1_final\\output\\PrintFactory_Jeff_mechanical_v2_44300.mp4",
+  "video_sha256": "78a09793546b188240db127fb68d6e3b9ff5794311adcfe93a3e4b997229497c",
+  "audit": {
+    "valid": true,
+    "errors": [],
+    "frames": 4935,
+    "telemetry_frames": 4935,
+    "fps": 40.0,
+    "video_seconds": 123.375,
+    "first_sim_s": 0.05,
+    "final_sim_s": 246.75,
+    "nonuniform_pts": 0,
+    "visible_active_models": [
+      "nomad",
+      "vint"
+    ],
+    "learned_translation_seconds": {
+      "vint": 44.29999999999962,
+      "nomad": 40.84999999999982
+    },
+    "source_snapshot_files": 43,
+    "source_snapshot_checksum_errors": [],
+    "experiment_success": true
+  },
+  "cpu_tests_passed": 54,
+  "accepted_navigation_responses": {
+    "vint": 187,
+    "nomad": 169
+  },
+  "runtime_source_changes_since_capture": [],
+  "submitted_v1_zip_sha256_unchanged": "58861060be7aaacd7898524cc778ed83626a7aab5122301cbb258ab5d8e8d3a1",
+  "visual_qa_sim_seconds": [
+    1,
+    14,
+    65,
+    246.75
+  ],
+  "robot_contact_sampling_hz": 100,
+  "equipment_contact_sampling_hz": 20,
+  "limitations": [
+    "100-sheet piles are aggregate rigid bodies; individual sheet separation, ink transfer, paper folding and cutting are process-state approximations",
+    "Heading alignment, final precision docking, gantry and machine control are conventional; learned wheel navigation is ViNT and NoMaD",
+    "No claim of superiority over rule-based traffic scheduling"
+  ],
+  "max_amr_translation_per_captured_frame_m": [
+    0.010061192845285392,
+    0.010159113481335923
+  ],
+  "max_amr_rotation_per_captured_frame_rad": [
+    0.01890258176922166,
+    0.01924426004397739
+  ]
+}

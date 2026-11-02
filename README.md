@@ -1,5 +1,20 @@
 # PrintFactory — 工場を分散した身体として動かす
 
+## 改良版 V2
+
+印刷ジョブと2台のAMRを接続し、すれ違えない0.90mの通路でJeffが先行・待避・追加通行許可を判断します。ViNT／NoMaDの実際の画像予測で車輪を駆動し、ガントリー・ローラー・昇降・クランプには力とストロークの上限を設けています。外壁はありません。
+
+Aは白紙から印刷工程を経て折り機へ、Bは折り済み仕掛品から断裁機へ搬送します。材料加工は工程モデルの近似です。動画には現在の工程、各AIの入力画像・予測・判断、通常制御との区別を同期表示します。
+
+- [改良版の説明・実行手順・検証結果](README_V2.md)
+- [改良版動画：2分3.375秒、一律2倍・時間省略なし](output/PrintFactory_Jeff_mechanical_v2_44300.mp4)
+- [全フレーム・推論・収録コードの実験記録ZIP](output/PrintFactory_mechanical_v2_trace_44300.zip)
+- [最終検証JSON](output/v2/final_validation_44300.json)
+
+2件の受け渡し完了、同時積載走行10.31秒、接触検出0件、CPUテスト54件成功を確認しています。以下は提出済みV1の記録です。
+
+## 提出済み V1
+
 提出用は **1ジョブを印刷から梱包まで、SIM時刻を飛ばさず収録した連続動画**です。アカウントIDは **44300**。Jeff 2Bが通路画像と工程状態を判断し、ViNT / NoMaDの公開移動ロボット基盤モデルが2台のAMRのwaypointを生成します。Genesisの接触で紙束を移載します。追加学習はありません。
 
 ## 提出動画：1分32.85秒、2倍速、カットなし
@@ -29,4 +44,4 @@ Jeffの視覚段は固定通路RGBから direct / south を判断します。作
 
 元の3ジョブ版も残しています。[実行ログ](output/jeff_factory/jeff/result.json) は778.15 SIM秒で冊子100冊・リーフレット200部、16回の支持済み移載を記録しています。こちらの旧編集動画には時刻の省略があり、新しい提出動画のフレームや成功件数には混ぜません。旧RoboBrain単一ジョブ版は [履歴](docs/superpowers/README_ROBOBRAIN_HISTORY.md) です。
 
-GitHub公開先： https://github.com/rutiruk/physical-ai-print-factory-44300 。この作業でのYouTube公開・OmniCampus提出は未実施です。
+GitHub公開先： https://github.com/rutiruk/physical-ai-print-factory-44300 。提出済みV1のYouTube動画： https://youtu.be/et5N1Cry6q4 。OmniCampusへの提出完了はユーザー確認済みです。改良版V2は上記のMP4として公開しています。

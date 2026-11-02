@@ -1,6 +1,6 @@
 # 提出メモ — アカウントID 44300
 
-提出動画を単一ジョブの連続映像に変更しました。コード公開先： https://github.com/rutiruk/physical-ai-print-factory-44300 。この作業でのYouTube公開・OmniCampusへのフォーム送信は未実施です。
+提出動画を単一ジョブの連続映像に変更しました。コード公開先： https://github.com/rutiruk/physical-ai-print-factory-44300 。提出済みV1のYouTube動画は https://youtu.be/et5N1Cry6q4 です。OmniCampusへの提出完了はユーザー確認済みです。提出後の改良版V2はREADME_V2.mdで案内し、提出済みの動画・PDF・ZIPは保持しています。
 
 - 動画：output/PrintFactory_Jeff_demo_44300.mp4（1分32.85秒、2倍速、カットなし）
 - 説明資料：output/説明資料_PAI最終課題_44300.pdf

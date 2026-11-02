@@ -1,0 +1,20 @@
+<mujoco model="v2_four_wheel_skid_amr">
+  <compiler angle="radian"/>
+  <default><joint damping=".08" armature=".005"/><geom friction=".65 .005 .0001" condim="3"/></default>
+  <worldbody>
+    <body name="amr" pos="0 0 0">
+      <freejoint name="floating_base"/>
+      <geom name="chassis" type="box" pos="0 0 .135" size=".32 .22 .105" mass="18" rgba=".04 .45 .85 1"/>
+      <geom name="front_marker" type="box" pos=".295 0 .25" size=".025 .12 .015" mass=".1" rgba=".1 .9 .55 1" contype="0" conaffinity="0"/>
+      <body name="wheel_fl" pos=".20 .245 0"><joint name="motor_fl" axis="0 1 0"/><geom type="cylinder" size=".09 .035" quat=".70710678 .70710678 0 0" mass=".6" rgba=".035 .04 .05 1"/></body>
+      <body name="wheel_rl" pos="-.20 .245 0"><joint name="motor_rl" axis="0 1 0"/><geom type="cylinder" size=".09 .035" quat=".70710678 .70710678 0 0" mass=".6" rgba=".035 .04 .05 1"/></body>
+      <body name="wheel_fr" pos=".20 -.245 0"><joint name="motor_fr" axis="0 1 0"/><geom type="cylinder" size=".09 .035" quat=".70710678 .70710678 0 0" mass=".6" rgba=".035 .04 .05 1"/></body>
+      <body name="wheel_rr" pos="-.20 -.245 0"><joint name="motor_rr" axis="0 1 0"/><geom type="cylinder" size=".09 .035" quat=".70710678 .70710678 0 0" mass=".6" rgba=".035 .04 .05 1"/></body>
+      <body name="deck" pos="0 0 .285">
+        <joint name="lift" type="slide" axis="0 0 1" limited="true" range="0 .06" damping="10"/>
+        <geom name="platform" type="box" size=".30 .24 .02" mass="2" rgba=".12 .65 .95 1" friction=".9 .01 .001"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
+

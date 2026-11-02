@@ -1,0 +1,37 @@
+<mujoco model="driven_feeder_and_clamp">
+  <compiler angle="radian" />
+  <asset>
+    <mesh name="table_profile_front" vertex="-0.40000000 -0.30000000 0.33500000 -0.40000000 -0.30000000 0.39200000 -0.40000000 -0.29000000 0.39500000 -0.40000000 -0.17000000 0.39500000 -0.40000000 -0.16000000 0.39200000 -0.40000000 -0.16000000 0.33500000 0.40000000 -0.30000000 0.33500000 0.40000000 -0.30000000 0.39200000 0.40000000 -0.29000000 0.39500000 0.40000000 -0.17000000 0.39500000 0.40000000 -0.16000000 0.39200000 0.40000000 -0.16000000 0.33500000" />
+    <mesh name="table_profile_middle" vertex="-0.40000000 -0.08000000 0.33500000 -0.40000000 -0.08000000 0.39200000 -0.40000000 -0.07000000 0.39500000 -0.40000000 -0.04000000 0.39500000 -0.40000000 -0.03000000 0.39200000 -0.40000000 -0.03000000 0.33500000 0.40000000 -0.08000000 0.33500000 0.40000000 -0.08000000 0.39200000 0.40000000 -0.07000000 0.39500000 0.40000000 -0.04000000 0.39500000 0.40000000 -0.03000000 0.39200000 0.40000000 -0.03000000 0.33500000" />
+    <mesh name="table_profile_back" vertex="-0.40000000 0.05000000 0.33500000 -0.40000000 0.05000000 0.39200000 -0.40000000 0.06000000 0.39500000 -0.40000000 0.29000000 0.39500000 -0.40000000 0.30000000 0.39200000 -0.40000000 0.30000000 0.33500000 0.40000000 0.05000000 0.33500000 0.40000000 0.05000000 0.39200000 0.40000000 0.06000000 0.39500000 0.40000000 0.29000000 0.39500000 0.40000000 0.30000000 0.39200000 0.40000000 0.30000000 0.33500000" />
+  </asset>
+  <worldbody>
+    <body name="machine_frame">
+      <geom name="table_front" type="mesh" mesh="table_profile_front" rgba=".25 .35 .43 1" />
+      <geom name="table_middle" type="mesh" mesh="table_profile_middle" rgba=".25 .35 .43 1" />
+      <geom name="table_back" type="mesh" mesh="table_profile_back" rgba=".25 .35 .43 1" />
+      <geom type="box" pos="-.34 .16 .18" size=".045 .045 .18" rgba=".2 .27 .33 1" />
+      <geom type="box" pos=".34 .16 .18" size=".045 .045 .18" rgba=".2 .27 .33 1" />
+      <geom type="box" pos="-.34 -.16 .18" size=".045 .045 .18" rgba=".2 .27 .33 1" />
+      <geom type="box" pos=".34 -.16 .18" size=".045 .045 .18" rgba=".2 .27 .33 1" />
+      <geom name="clamp_post_l" type="box" pos="-.30 .12 .60" size=".025 .025 .23" rgba=".7 .74 .77 1" />
+      <geom name="clamp_post_r" type="box" pos=".30 .12 .60" size=".025 .025 .23" rgba=".7 .74 .77 1" />
+      <geom name="clamp_header" type="box" pos="0 .12 .82" size=".325 .04 .03" rgba=".7 .74 .77 1" />
+      <body name="roller_a" pos="0 -.12 .355">
+        <joint name="roller_a" type="hinge" axis="1 0 0" damping=".06" />
+        <geom type="cylinder" quat=".70710678 0 .70710678 0" size=".04 .275" mass="1.2" rgba=".12 .15 .18 1" friction=".8 .01 .001" />
+        <geom name="rotation_marker_a" type="box" pos=".279 .024 .024" size=".006 .016 .008" mass=".01" rgba="1 .62 .1 1" />
+      </body>
+      <body name="roller_b" pos="0 .01 .355">
+        <joint name="roller_b" type="hinge" axis="1 0 0" damping=".06" />
+        <geom type="cylinder" quat=".70710678 0 .70710678 0" size=".04 .275" mass="1.2" rgba=".12 .15 .18 1" friction=".8 .01 .001" />
+        <geom name="rotation_marker_b" type="box" pos=".279 .024 .024" size=".006 .016 .008" mass=".01" rgba="1 .62 .1 1" />
+      </body>
+      <body name="clamp" pos="0 .17 .485">
+        <joint name="clamp" type="slide" axis="0 0 1" range="-.065 0" limited="true" damping="30" />
+        <geom name="pressure_bar" type="box" size=".265 .055 .015" mass="2" rgba=".95 .57 .08 1" />
+        <geom name="piston" type="cylinder" pos="0 0 .12" size=".018 .12" mass=".3" rgba=".7 .74 .78 1" />
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

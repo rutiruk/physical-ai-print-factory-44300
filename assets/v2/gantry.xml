@@ -1,0 +1,38 @@
+<mujoco model="anchored_cartesian_portal">
+  <compiler angle="radian"/>
+  <worldbody>
+    <body name="portal">
+      <geom name="post_nw" type="box" pos="-3.8 1.9 .9" size=".075 .075 .9" rgba=".2 .26 .32 1"/>
+      <geom name="post_sw" type="box" pos="-3.8 -1.9 .9" size=".075 .075 .9" rgba=".2 .26 .32 1"/>
+      <geom name="post_ne" type="box" pos="3.8 1.9 .9" size=".075 .075 .9" rgba=".2 .26 .32 1"/>
+      <geom name="post_se" type="box" pos="3.8 -1.9 .9" size=".075 .075 .9" rgba=".2 .26 .32 1"/>
+      <geom name="x_rail_n" type="box" pos="0 1.9 1.8" size="3.88 .055 .065" rgba=".65 .69 .73 1"/>
+      <geom name="x_rail_s" type="box" pos="0 -1.9 1.8" size="3.88 .055 .065" rgba=".65 .69 .73 1"/>
+      <body name="bridge" pos="0 0 1.8">
+        <!-- 7kg beam + two 1kg runners; body-axis tensor about their aggregate COM. -->
+        <inertial pos="0 0 -.004444444444444" quat="1 0 0 0" mass="9" diaginertia="16.29133055555556 .037422222222222 16.30775833333333"/>
+        <joint name="x" type="slide" axis="1 0 0" range="-3.4 3.4" limited="true" damping="35"/>
+        <geom name="bridge_beam" type="box" size=".065 1.97 .055" mass="7" rgba=".95 .58 .12 1"/>
+        <geom name="runner_n" type="box" pos="0 1.9 -.02" size=".16 .09 .065" mass="1" rgba=".3 .36 .43 1"/>
+        <geom name="runner_s" type="box" pos="0 -1.9 -.02" size=".16 .09 .065" mass="1" rgba=".3 .36 .43 1"/>
+        <body name="trolley" pos="0 0 -.05">
+          <joint name="y" type="slide" axis="0 1 0" range="-1.6 1.6" limited="true" damping="25"/>
+          <geom name="carriage" type="box" size=".115 .12 .075" mass="2" rgba=".08 .55 .65 1"/>
+          <geom name="z_guide_l" type="box" pos="-.047 0 -.4" size=".012 .035 .4" mass=".4" rgba=".45 .51 .57 1"/>
+          <geom name="z_guide_r" type="box" pos=".047 0 -.4" size=".012 .035 .4" mass=".4" rgba=".45 .51 .57 1"/>
+          <body name="z_slide">
+            <joint name="z" type="slide" axis="0 0 1" range="-1.35 -.65" limited="true" damping="20"/>
+            <geom name="telescoping_mast" type="box" pos="0 0 .325" size=".025 .025 .32" mass=".65" rgba=".75 .78 .8 1"/>
+            <body name="tool">
+              <joint name="yaw" type="hinge" axis="0 0 1" range="-3.141593 3.141593" limited="true" damping="2"/>
+              <geom name="pusher" type="box" size=".18 .012 .003" mass=".35" rgba="1 .43 .06 1" friction=".45 .01 .001"/>
+              <geom name="tool_mount" type="box" pos="0 0 .025" size=".025 .025 .022" mass=".15" rgba=".2 .25 .3 1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
+
+
